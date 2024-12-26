@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import { brandTitle } from "@/utils/content/generalSiteContent";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -20,7 +21,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Road Safety India | Wear Helmet!",
+  title: `${brandTitle} | Wear Helmet!`,
   description: "A road safety awareness website for India",
 };
 
