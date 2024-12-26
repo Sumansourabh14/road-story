@@ -1,1 +1,1 @@
-export const brandTitle = "Road Safety India";
+export const brandTitle = "Road Story";
