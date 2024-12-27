@@ -3,6 +3,9 @@ import "./globals.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { brandTitle } from "@/utils/content/generalSiteContent";
+import Navbar from "@/components/customUi/Navbar";
+import Footer from "@/components/customUi/Footer";
+import { Toaster } from "@/components/ui/toaster";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -31,7 +34,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
+        <Navbar />
         {children}
+        <Footer />
+        <Toaster />
       </body>
     </html>
   );

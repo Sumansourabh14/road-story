@@ -7,11 +7,9 @@ export async function uploadFile(file, name) {
     .from(BUCKET_NAME)
     .upload(`/clips/${name}`, file);
   if (error) {
-    console.log(error);
-    return;
+    return error;
   } else {
     // Handle success
-    console.log("File has been uploaded!", data);
     return data;
   }
 }

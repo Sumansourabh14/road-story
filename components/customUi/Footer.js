@@ -2,7 +2,7 @@ import { brandTitle } from "@/utils/content/generalSiteContent";
 import { faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import React from "react";
+import ListItemLink from "../navigation/ListItemLink";
 
 const Footer = () => {
   return (
@@ -21,25 +21,18 @@ const Footer = () => {
           <div>
             <h2 className="text-lg font-semibold text-white">Quick Links</h2>
             <ul className="mt-2 space-y-2">
+              <ListItemLink title={"Home"} destination={"/"} />
+              <ListItemLink
+                title={"Upload Video"}
+                destination={"/upload/video"}
+              />
+              <ListItemLink title={"Videos"} destination={"/videos"} />
+              <ListItemLink title={"About"} destination={"/about"} />
+              <ListItemLink title={"Login"} destination={"/login"} />
               <li>
-                <a href="#" className="hover:text-white transition">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition">
-                  Contact
-                </a>
+                <Link href="/signup" className="hover:bg-zinc-800 transition">
+                  Sign up
+                </Link>
               </li>
             </ul>
           </div>

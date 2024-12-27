@@ -1,4 +1,3 @@
-import React from "react";
 import DoubleFlex from "./layoutSections/DoubleFlex";
 
 const VideoInfoSection = ({

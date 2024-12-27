@@ -6,11 +6,9 @@ export function getFileUrl(filePath) {
     .from(BUCKET_NAME)
     .getPublicUrl(filePath);
   if (error) {
-    console.log(error);
     return;
   } else {
     // Handle success
-    console.log("File URL is fetched!", data.publicUrl);
     return data.publicUrl;
   }
 }

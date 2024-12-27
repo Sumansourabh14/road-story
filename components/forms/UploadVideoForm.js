@@ -9,21 +9,39 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import VideoUploader from "./VideoUploader";
+import { useToast } from "@/hooks/use-toast";
+import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
+import { roadIncidents } from "@/utils/content/roadSafetyTerms";
 
 export default function UploadVideoForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [videoFile, setVideoFile] = useState("");
+  const [location, setLocation] = useState("");
   const [loading, setLoading] = useState(false);
   const [previewUrl, setPreviewUrl] = useState(null);
+  const [incidentType, setIncidentType] = useState([]);
+  const { toast } = useToast();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
+
     if (selectedFile && selectedFile.type.startsWith("video/")) {
-      setVideoFile(selectedFile);
-      setPreviewUrl(URL.createObjectURL(selectedFile));
+      if (selectedFile.size < 50331648) {
+        setVideoFile(selectedFile);
+        setPreviewUrl(URL.createObjectURL(selectedFile));
+      } else {
+        toast({
+          variant: "destructive",
+          title: "File size exceeded 48 MB",
+          description: "Please choose a file of size less than 48 MB",
+        });
+      }
     } else {
-      alert("Please select a valid video file.");
+      toast({
+        variant: "destructive",
+        description: "Please select a valid video file.",
+      });
     }
   };
 
@@ -34,7 +52,10 @@ export default function UploadVideoForm() {
 
   const uploadVideo = async (file) => {
     if (!file) {
-      console.log("No file selected");
+      toast({
+        variant: "destructive",
+        description: "No file selected",
+      });
       return;
     }
 
@@ -47,7 +68,12 @@ export default function UploadVideoForm() {
       return response;
     } catch (error) {
       setLoading(true);
-      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Video could not be uploaded",
+        description: error.message,
+      });
+      return error;
     } finally {
       setLoading(false);
     }
@@ -64,16 +90,34 @@ export default function UploadVideoForm() {
           title,
           description,
           videoUrl: fileUrl,
+          location,
+          incidentType,
           uploadedBy: undefined,
           uploadedByGuest: true,
         };
 
         const response = await uploadVideoDetails(payload);
-        console.log(response);
+
+        if (!!response) {
+          toast({
+            title: "Video uploaded successfully!",
+            description: "The video will be visible to all users.",
+          });
+        }
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Video could not be uploaded",
+          description: res?.message,
+        });
       }
     } catch (error) {
       setLoading(true);
-      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Oops!",
+        description: "Video details could not be uploaded. Please try again.",
+      });
     } finally {
       setLoading(false);
     }
@@ -81,8 +125,7 @@ export default function UploadVideoForm() {
 
   return (
     <div className="max-w-md mx-auto p-4">
-      <h1 className="text-xl font-bold mb-4">Upload Video</h1>
-      <form className="space-y-4" onSubmit={handleSubmit}>
+      <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title" className="block text-sm font-medium mb-1">
             Title
@@ -91,7 +134,7 @@ export default function UploadVideoForm() {
             id="title"
             name="title"
             type="text"
-            placeholder="Enter the title"
+            placeholder="What do you want to name this event?"
             className="w-full"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -107,10 +150,11 @@ export default function UploadVideoForm() {
           <Textarea
             id="description"
             name="description"
-            placeholder="Enter the description"
+            placeholder="Any additional info describing the event..."
             className="w-full"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            rows={5}
           />
         </div>
         <VideoUploader
@@ -119,6 +163,50 @@ export default function UploadVideoForm() {
           handleRemoveVideo={handleRemoveVideo}
           previewUrl={previewUrl}
         />
+        {!!videoFile && (
+          <div className="space-y-6">
+            <div>
+              <label
+                htmlFor="location"
+                className="block text-sm font-medium mb-1"
+              >
+                Location
+              </label>
+              <Input
+                id="location"
+                name="location"
+                type="text"
+                placeholder="Where did this event occur?"
+                className="w-full"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Type of incident
+              </label>
+              <p className="text-sm text-muted-foreground my-2">
+                You can select more than one
+              </p>
+              <ToggleGroup
+                variant="outline"
+                type="multiple"
+                className="flex flex-wrap"
+                value={incidentType}
+                onValueChange={(value) => {
+                  setIncidentType(value);
+                }}
+              >
+                {roadIncidents.map((type) => (
+                  <ToggleGroupItem key={type.value} value={type.value}>
+                    {type.title}
+                  </ToggleGroupItem>
+                ))}
+              </ToggleGroup>
+            </div>
+          </div>
+        )}
         <Button
           type="submit"
           className="w-full"
@@ -128,6 +216,11 @@ export default function UploadVideoForm() {
           Submit
         </Button>
       </form>
+      {loading && (
+        <p className="py-8 text-center">
+          Saving the details... Don't close this page.
+        </p>
+      )}
     </div>
   );
 }

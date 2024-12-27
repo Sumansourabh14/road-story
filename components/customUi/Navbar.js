@@ -1,7 +1,9 @@
 "use client";
 import { brandTitle } from "@/utils/content/generalSiteContent";
+import { useState } from "react";
+import ListItemLink from "../navigation/ListItemLink";
+import SignUpListItemLink from "../navigation/SignUpListItemLink";
 import Link from "next/link";
-import React, { useState } from "react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,32 +12,18 @@ const Navbar = () => {
     <nav className="bg-gray-900 text-gray-300 font-[family-name:var(--font-inter)]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Brand Logo */}
-        <a href="#" className="text-xl font-bold text-white">
+        <Link href="/" className="text-xl font-bold text-white">
           {brandTitle}
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-6">
-          <li>
-            <Link href="/" className="hover:text-white transition">
-              Home
-            </Link>
-          </li>
-          <li>
-            <a href="#" className="hover:text-white transition">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-white transition">
-              Login
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-white transition">
-              Sign up
-            </a>
-          </li>
+          <ListItemLink title={"Home"} destination={"/"} />
+          <ListItemLink title={"Upload Video"} destination={"/upload/video"} />
+          <ListItemLink title={"Videos"} destination={"/videos"} />
+          <ListItemLink title={"About"} destination={"/about"} />
+          <ListItemLink title={"Login"} destination={"/login"} />
+          <SignUpListItemLink />
         </ul>
 
         {/* Mobile Menu Button */}
@@ -67,26 +55,15 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-gray-800">
           <ul className="space-y-4 px-4 py-4">
-            <li>
-              <a href="#" className="block hover:text-white transition">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block hover:text-white transition">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block hover:text-white transition">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block hover:text-white transition">
-                Contact
-              </a>
-            </li>
+            <ListItemLink title={"Home"} destination={"/"} />
+            <ListItemLink
+              title={"Upload Video"}
+              destination={"/upload/video"}
+            />
+            <ListItemLink title={"Videos"} destination={"/videos"} />
+            <ListItemLink title={"About"} destination={"/about"} />
+            <ListItemLink title={"Login"} destination={"/login"} />
+            <SignUpListItemLink />
           </ul>
         </div>
       )}
