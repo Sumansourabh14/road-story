@@ -1,5 +1,3 @@
-import React from "react";
-
 const DoubleFlex = ({ firstItem, secondItem, isReverseDirection = false }) => {
   return (
     <section

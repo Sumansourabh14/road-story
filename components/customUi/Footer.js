@@ -26,6 +26,7 @@ const Footer = () => {
                 title={"Upload Video"}
                 destination={"/upload/video"}
               />
+              <ListItemLink title={"Videos"} destination={"/videos"} />
               <ListItemLink title={"About"} destination={"/about"} />
               <ListItemLink title={"Login"} destination={"/login"} />
               <li>
