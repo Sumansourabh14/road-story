@@ -42,7 +42,7 @@ const Footer = () => {
             <h2 className="text-lg font-semibold text-white">Follow Us</h2>
             <div className="mt-2 flex space-x-4">
               <Link
-                href="https://x.com/wtfindianroads"
+                href="https://x.com/roadstoryy"
                 className="hover:text-white transition"
                 aria-label="Twitter"
               >
