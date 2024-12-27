@@ -1,3 +1,4 @@
+import { getIncidentType } from "@/utils/functions/getIncidentType";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -41,7 +42,7 @@ const VideoDetailsGrid = ({ videos }) => {
                       key={i}
                       className="text-xs bg-zinc-200 px-2 py-1 rounded-full"
                     >
-                      {type}
+                      {getIncidentType(type)}
                     </li>
                   ))}
                 </ul>

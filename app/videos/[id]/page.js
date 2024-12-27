@@ -1,6 +1,7 @@
 "use client";
 import { getVideoById } from "@/services/globalApi";
 import { brandTitle } from "@/utils/content/generalSiteContent";
+import { getIncidentType } from "@/utils/functions/getIncidentType";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useParams } from "next/navigation";
@@ -68,7 +69,7 @@ const SingleVideo = () => {
                   key={index}
                   className="text-xs bg-zinc-200 px-2 py-1 rounded-full"
                 >
-                  {type}
+                  {getIncidentType(type)}
                 </li>
               ))}
             </ul>
