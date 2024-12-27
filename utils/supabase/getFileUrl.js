@@ -10,7 +10,6 @@ export function getFileUrl(filePath) {
     return;
   } else {
     // Handle success
-    console.log("File URL is fetched!", data.publicUrl);
     return data.publicUrl;
   }
 }

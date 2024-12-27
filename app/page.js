@@ -1,14 +1,11 @@
 import { SampleBarChart } from "@/components/charts/SampleBarChart";
-import Footer from "@/components/customUi/Footer";
 import { Hero } from "@/components/customUi/Hero";
-import Navbar from "@/components/customUi/Navbar";
 import VideoInfoSection from "@/components/customUi/VideoInfoSection";
 import SectionTitle from "@/components/text/SectionTitle";
 
 export default function Home() {
   return (
     <>
-      <Navbar />
       <Hero />
       <hr />
       <section className="flex flex-col justify-center p-8 pb-20 sm:p-20 max-w-[1300px] mx-auto">
@@ -32,7 +29,6 @@ export default function Home() {
         />
         <SampleBarChart />
       </section>
-      <Footer />
     </>
   );
 }
