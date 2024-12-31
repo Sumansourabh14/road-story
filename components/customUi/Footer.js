@@ -49,7 +49,7 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faXTwitter} />
               </Link>
               <Link
-                href="#"
+                href="https://instagram.com/road.storyy/"
                 className="hover:text-white transition"
                 aria-label="Instagram"
               >
