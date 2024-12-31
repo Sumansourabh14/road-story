@@ -3,7 +3,7 @@ import { useInterval } from "@/hooks/useInterval";
 import { backendServerReloader } from "@/utils/functions/backendServerReloader";
 
 const KeepServerAlive = () => {
-  useInterval(backendServerReloader, 55000);
+  useInterval(backendServerReloader, 880000);
 
   return <></>;
 };

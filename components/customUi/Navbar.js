@@ -23,7 +23,7 @@ const Navbar = () => {
           <ListItemLink title={"Videos"} destination={"/videos"} />
           <ListItemLink title={"About"} destination={"/about"} />
           {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
-          {/* <SignUpListItemLink /> */}
+          <SignUpListItemLink />
         </ul>
 
         {/* Mobile Menu Button */}
@@ -63,7 +63,7 @@ const Navbar = () => {
             <ListItemLink title={"Videos"} destination={"/videos"} />
             <ListItemLink title={"About"} destination={"/about"} />
             {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
-            {/* <SignUpListItemLink /> */}
+            <SignUpListItemLink />
           </ul>
         </div>
       )}
