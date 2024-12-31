@@ -1,11 +1,12 @@
-import { Geist, Geist_Mono, Inter } from "next/font/google";
-import "./globals.css";
+import Footer from "@/components/customUi/Footer";
+import Navbar from "@/components/customUi/Navbar";
+import { Toaster } from "@/components/ui/toaster";
+import { brandTitle } from "@/utils/content/generalSiteContent";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { brandTitle } from "@/utils/content/generalSiteContent";
-import Navbar from "@/components/customUi/Navbar";
-import Footer from "@/components/customUi/Footer";
-import { Toaster } from "@/components/ui/toaster";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
+import "./globals.css";
+import KeepServerAlive from "@/components/KeepServerAlive";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
         <Navbar />
+        <KeepServerAlive />
         {children}
         <Footer />
         <Toaster />
