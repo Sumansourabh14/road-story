@@ -13,7 +13,7 @@ const Footer = () => {
           <div>
             <h2 className="text-lg font-semibold text-white">{brandTitle}</h2>
             <p className="mt-2 text-sm">
-              Creating value with innovative solutions and unmatched services.
+              Road safety awareness platform, built for a new India.
             </p>
           </div>
 
