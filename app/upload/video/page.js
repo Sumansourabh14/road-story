@@ -14,7 +14,10 @@ const UploadVideo = () => {
     <CenteredPage>
       <div className="text-center pb-12">
         <SectionTitle title="Upload a Video" />
-        <p className="pt-4">Upload any video. No sign up required.</p>
+        <p className="pt-4 max-w-[720px] mx-auto">
+          Upload any dashcam video/CCTV footage about anything unusual happening
+          on Indian roads. No sign up required.
+        </p>
       </div>
       <UploadVideoForm />
     </CenteredPage>

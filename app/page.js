@@ -1,12 +1,14 @@
-import { SampleBarChart } from "@/components/charts/SampleBarChart";
 import { Hero } from "@/components/customUi/Hero";
 import VideoInfoSection from "@/components/customUi/VideoInfoSection";
+import WhyRoadStoryy from "@/components/customUi/WhyRoadStoryy";
 import SectionTitle from "@/components/text/SectionTitle";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <hr />
+      <WhyRoadStoryy />
       <hr />
       <section className="flex flex-col justify-center p-8 pb-20 sm:p-20 max-w-[1300px] mx-auto">
         <div className="text-center">
@@ -27,7 +29,6 @@ export default function Home() {
           }
           isReverseDirection={true}
         />
-        {/* <SampleBarChart /> */}
       </section>
     </>
   );
