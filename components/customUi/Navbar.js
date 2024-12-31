@@ -22,8 +22,8 @@ const Navbar = () => {
           <ListItemLink title={"Upload Video"} destination={"/upload/video"} />
           <ListItemLink title={"Videos"} destination={"/videos"} />
           <ListItemLink title={"About"} destination={"/about"} />
-          <ListItemLink title={"Login"} destination={"/login"} />
-          <SignUpListItemLink />
+          {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
+          {/* <SignUpListItemLink /> */}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -62,8 +62,8 @@ const Navbar = () => {
             />
             <ListItemLink title={"Videos"} destination={"/videos"} />
             <ListItemLink title={"About"} destination={"/about"} />
-            <ListItemLink title={"Login"} destination={"/login"} />
-            <SignUpListItemLink />
+            {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
+            {/* <SignUpListItemLink /> */}
           </ul>
         </div>
       )}

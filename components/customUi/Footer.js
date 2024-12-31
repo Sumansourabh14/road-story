@@ -28,12 +28,12 @@ const Footer = () => {
               />
               <ListItemLink title={"Videos"} destination={"/videos"} />
               <ListItemLink title={"About"} destination={"/about"} />
-              <ListItemLink title={"Login"} destination={"/login"} />
-              <li>
+              {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
+              {/* <li>
                 <Link href="/signup" className="hover:bg-zinc-800 transition">
                   Sign up
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 
