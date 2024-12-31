@@ -11,7 +11,7 @@ const PasswordInput = ({ password, handlePasswordChange }) => {
     <div className="relative">
       <Input
         type={showPassword ? "text" : "password"}
-        placeholder="Password"
+        placeholder="Enter a password"
         value={password}
         onChange={handlePasswordChange}
         required
