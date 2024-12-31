@@ -1,8 +1,14 @@
 import { brandTitle } from "@/utils/content/generalSiteContent";
-import { faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import {
+  faInstagram,
+  faReddit,
+  faRedditAlien,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import ListItemLink from "../navigation/ListItemLink";
+import SocialMediaLinkIcon from "../icons/SocialMediaLinkIcon";
 
 const Footer = () => {
   return (
@@ -41,20 +47,21 @@ const Footer = () => {
           <div>
             <h2 className="text-lg font-semibold text-white">Follow Us</h2>
             <div className="mt-2 flex space-x-4">
-              <Link
-                href="https://x.com/roadstoryy"
-                className="hover:text-white transition"
-                aria-label="Twitter"
-              >
-                <FontAwesomeIcon icon={faXTwitter} />
-              </Link>
-              <Link
-                href="https://instagram.com/road.storyy/"
-                className="hover:text-white transition"
-                aria-label="Instagram"
-              >
-                <FontAwesomeIcon icon={faInstagram} />
-              </Link>
+              <SocialMediaLinkIcon
+                destination={"https://x.com/roadstoryy"}
+                label="X"
+                icon={faXTwitter}
+              />
+              <SocialMediaLinkIcon
+                destination={"https://instagram.com/road.storyy/"}
+                label="Instagram"
+                icon={faInstagram}
+              />
+              <SocialMediaLinkIcon
+                destination={"https://www.reddit.com/user/roadstoryy/"}
+                label="Reddit"
+                icon={faRedditAlien}
+              />
             </div>
           </div>
         </div>
