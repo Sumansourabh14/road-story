@@ -1,18 +1,20 @@
 "use client";
-import { signUp } from "@/services/globalApi";
+import { checkUsernameExists, signUp } from "@/services/globalApi";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoadingButton from "../buttons/LoadingButton";
 import { Input } from "../ui/input";
 import PasswordInput from "./PasswordInput";
 
 const SignUpForm = () => {
   // State variables for individual input values
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorText, setErrorText] = useState("");
+  const [usernameText, setUsernameText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [checkUsernameLoading, setCheckUsernameLoading] = useState(false);
   const router = useRouter();
 
   // Handlers for form submission and value changes
@@ -21,7 +23,7 @@ const SignUpForm = () => {
     e.preventDefault();
 
     const payload = {
-      name,
+      username,
       email,
       password,
     };
@@ -39,19 +41,52 @@ const SignUpForm = () => {
     setLoading(false);
   };
 
+  const isUsernameUnique = async (username) => {
+    setCheckUsernameLoading(true);
+
+    const res = await checkUsernameExists(username);
+
+    if (res.data.success) {
+      setUsernameText("This username is available!");
+    } else if (!res.data.success) {
+      setUsernameText(res.data.message);
+    }
+
+    setCheckUsernameLoading(false);
+  };
+
+  useEffect(() => {
+    if (username.trim().length > 0) {
+      isUsernameUnique(username);
+    } else {
+      setUsernameText("");
+    }
+  }, [username]);
+
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
       {!!errorText && <p className="text-center text-red-500">{errorText}</p>}
-      {/* Name Field */}
+      {/* Username Field */}
       <div className="space-y-1">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="username">Username</label>
         <Input
-          id="name"
+          id="username"
           type="text"
-          placeholder="Enter your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          placeholder="Enter any username. This is unique to all users."
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
+        {!!usernameText && (
+          <p
+            className={`text-left text-sm ${
+              usernameText === "This username is available!"
+                ? "text-green-600"
+                : "text-red-500"
+            }`}
+          >
+            {usernameText}
+          </p>
+        )}
       </div>
 
       {/* Email Field */}
@@ -77,7 +112,7 @@ const SignUpForm = () => {
 
       {/* Submit Button */}
       <LoadingButton
-        isDisabled={!name || !email || !password}
+        isDisabled={!username || !email || !password}
         loading={loading}
         title={"Sign Up"}
       />
