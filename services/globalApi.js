@@ -12,6 +12,18 @@ export const signUp = async (data) => {
   }
 };
 
+export const login = async (data) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/auth/login`,
+      data
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const checkUsernameExists = async (username) => {
   try {
     const response = await axios.post(
