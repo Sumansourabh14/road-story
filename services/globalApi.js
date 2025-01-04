@@ -13,15 +13,23 @@ export const signUp = async (data) => {
 };
 
 export const login = async (data) => {
-  try {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/auth/login`,
-      data
-    );
-    return response;
-  } catch (error) {
-    return error.response;
-  }
+  const response = await axios.post(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/auth/login`,
+    data
+  );
+  return response;
+};
+
+export const getSelf = async (token) => {
+  const response = await axios.post(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/users/self`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response;
 };
 
 export const checkUsernameExists = async (username) => {

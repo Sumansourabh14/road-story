@@ -1,6 +1,7 @@
 "use client";
-import { login } from "@/services/globalApi";
-import { useState } from "react";
+import { loginUser } from "@/redux/slices/login";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../buttons/LoadingButton";
 import { Input } from "../ui/input";
 import PasswordInput from "./PasswordInput";
@@ -8,11 +9,10 @@ import PasswordInput from "./PasswordInput";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorText, setErrorText] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { loading, user, error } = useSelector((state) => state.login);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
-    setLoading(true);
     e.preventDefault();
 
     const payload = {
@@ -20,24 +20,13 @@ const LoginForm = () => {
       password,
     };
 
-    const res = await login(payload);
-
-    if (res.data.success) {
-      setErrorText("");
-      const { token } = res.data;
-    } else if (!res.data.success) {
-      setErrorText(res.data.message);
-    } else if (res === undefined) {
-      setErrorText("An error occured. Please try again.");
-    }
-    setLoading(false);
+    dispatch(loginUser(payload));
   };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-6">
-      {!!errorText && <p className="text-center text-red-500">{errorText}</p>}
+      {!!error && <p className="text-center text-red-500">{error}</p>}
 
-      {/* Email Field */}
       <div className="space-y-1">
         <label htmlFor="email">Email</label>
         <Input
@@ -49,7 +38,6 @@ const LoginForm = () => {
         />
       </div>
 
-      {/* Password Field */}
       <div className="space-y-1">
         <label htmlFor="password">Password</label>
         <PasswordInput
@@ -58,7 +46,6 @@ const LoginForm = () => {
         />
       </div>
 
-      {/* Submit Button */}
       <LoadingButton
         isDisabled={!email || !password}
         loading={loading}

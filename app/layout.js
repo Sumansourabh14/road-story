@@ -7,6 +7,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import KeepServerAlive from "@/components/KeepServerAlive";
+import StoreProvider from "./StoreProvider";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -35,11 +36,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
-        <Navbar />
-        <KeepServerAlive />
-        {children}
-        <Footer />
-        <Toaster />
+        <StoreProvider>
+          <Navbar />
+          <KeepServerAlive />
+          {children}
+          <Footer />
+          <Toaster />
+        </StoreProvider>
       </body>
     </html>
   );
