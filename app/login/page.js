@@ -1,21 +1,21 @@
 import CenteredPage from "@/components/customUi/layoutSections/CenteredPage";
-import SignUpForm from "@/components/forms/SignUpForm";
+import LoginForm from "@/components/forms/LoginForm";
 import PageTitle from "@/components/text/PageTitle";
 import RedirectWrapper from "@/components/utilities/RedirectWrapper";
 
-const Signup = () => {
+const Login = () => {
   return (
     <RedirectWrapper>
       <CenteredPage>
         <section className="text-center">
-          <PageTitle title={"Sign Up"} />
+          <PageTitle title={"Login"} />
         </section>
         <section className="my-12">
-          <SignUpForm />
+          <LoginForm />
         </section>
       </CenteredPage>
     </RedirectWrapper>
   );
 };
 
-export default Signup;
+export default Login;

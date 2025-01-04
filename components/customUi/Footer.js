@@ -1,14 +1,12 @@
 import { brandTitle } from "@/utils/content/generalSiteContent";
 import {
   faInstagram,
-  faReddit,
   faRedditAlien,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import ListItemLink from "../navigation/ListItemLink";
 import SocialMediaLinkIcon from "../icons/SocialMediaLinkIcon";
+import ListItemLink from "../navigation/ListItemLink";
 
 const Footer = () => {
   return (
@@ -33,8 +31,8 @@ const Footer = () => {
                 destination={"/upload/video"}
               />
               <ListItemLink title={"Videos"} destination={"/videos"} />
-              <ListItemLink title={"About"} destination={"/about"} />
-              {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
+              {/* <ListItemLink title={"About"} destination={"/about"} /> */}
+              <ListItemLink title={"Login"} destination={"/login"} />
               <li>
                 <Link href="/signup" className="hover:bg-zinc-800 transition">
                   Sign up

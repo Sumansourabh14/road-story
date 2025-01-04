@@ -4,9 +4,18 @@ import { useState } from "react";
 import ListItemLink from "../navigation/ListItemLink";
 import SignUpListItemLink from "../navigation/SignUpListItemLink";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { Button } from "../ui/button";
+import { logout } from "@/redux/slices/user";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <nav className="bg-gray-900 text-gray-300 font-[family-name:var(--font-inter)]">
@@ -17,13 +26,26 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-6">
+        <ul className="hidden md:flex space-x-6 md:items-center">
           <ListItemLink title={"Home"} destination={"/"} />
           <ListItemLink title={"Upload Video"} destination={"/upload/video"} />
           <ListItemLink title={"Videos"} destination={"/videos"} />
-          <ListItemLink title={"About"} destination={"/about"} />
-          {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
-          <SignUpListItemLink />
+          {/* <ListItemLink title={"About"} destination={"/about"} /> */}
+          {!!user ? (
+            <li>
+              <Button
+                onClick={handleLogout}
+                className="hover:bg-red-900 transition px-8 py-2 bg-red-800 rounded-md border-b-2 text-md font-light"
+              >
+                Logout
+              </Button>
+            </li>
+          ) : (
+            <>
+              <ListItemLink title={"Login"} destination={"/login"} />
+              <SignUpListItemLink />
+            </>
+          )}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -61,9 +83,22 @@ const Navbar = () => {
               destination={"/upload/video"}
             />
             <ListItemLink title={"Videos"} destination={"/videos"} />
-            <ListItemLink title={"About"} destination={"/about"} />
-            {/* <ListItemLink title={"Login"} destination={"/login"} /> */}
-            <SignUpListItemLink />
+            {/* <ListItemLink title={"About"} destination={"/about"} /> */}
+            {!!user ? (
+              <li>
+                <Button
+                  onClick={handleLogout}
+                  className="hover:bg-red-900 transition px-8 py-2 bg-red-800 rounded-md border-b-2 text-md font-light"
+                >
+                  Logout
+                </Button>
+              </li>
+            ) : (
+              <>
+                <ListItemLink title={"Login"} destination={"/login"} />
+                <SignUpListItemLink />
+              </>
+            )}
           </ul>
         </div>
       )}
