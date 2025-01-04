@@ -1,4 +1,5 @@
 "use client";
+import CheckIfUserLoggedIn from "@/components/utilities/CheckIfUserLoggedIn";
 import { makeStore } from "@/redux/store";
 import { useRef } from "react";
 import { Provider } from "react-redux";
@@ -10,5 +11,10 @@ export default function StoreProvider({ children }) {
     storeRef.current = makeStore();
   }
 
-  return <Provider store={storeRef.current}>{children}</Provider>;
+  return (
+    <Provider store={storeRef.current}>
+      <CheckIfUserLoggedIn />
+      {children}
+    </Provider>
+  );
 }

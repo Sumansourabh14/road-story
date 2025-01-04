@@ -21,7 +21,7 @@ export const login = async (data) => {
 };
 
 export const getSelf = async (token) => {
-  const response = await axios.post(
+  const response = await axios.get(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/users/self`,
     {
       headers: {

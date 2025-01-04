@@ -1,18 +1,28 @@
 import { login } from "@/services/globalApi";
+import Cookies from "js-cookie";
+import { setToken, setUser } from "../user";
 
 const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 
-export const loginUser = createAsyncThunk("userLogin", async (payload) => {
-  const res = await login(payload);
-  return res.data;
-});
+export const loginUser = createAsyncThunk(
+  "userLogin",
+  async (payload, { dispatch }) => {
+    const res = await login(payload);
+
+    const { token, user } = res.data;
+
+    dispatch(setToken(token));
+    dispatch(setUser(user));
+
+    return res.data;
+  }
+);
 
 const loginSlice = createSlice({
   name: "login",
   initialState: {
     loading: false,
     data: null,
-    user: null,
     error: null,
   },
   extraReducers: (builder) => {
@@ -20,19 +30,17 @@ const loginSlice = createSlice({
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
         state.data = null;
-        state.user = null;
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
-        state.user = action.payload.user;
         state.error = null;
+        Cookies.set("token", action.payload.token, { secure: true });
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.data = null;
-        state.user = null;
         if (action.error.message === "Request failed with status code 401") {
           state.error = "Email or password is invalid";
         } else {

@@ -1,6 +1,6 @@
 "use client";
 import { loginUser } from "@/redux/slices/login";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingButton from "../buttons/LoadingButton";
 import { Input } from "../ui/input";
@@ -9,7 +9,7 @@ import PasswordInput from "./PasswordInput";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { loading, user, error } = useSelector((state) => state.login);
+  const { loading, error } = useSelector((state) => state.login);
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
