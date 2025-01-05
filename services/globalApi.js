@@ -77,3 +77,42 @@ export const getVideoById = async (id) => {
     console.error(error);
   }
 };
+
+export const createDiscussionThread = async (data, token) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/discussion/create`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const getAllDiscussions = async () => {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/discussion/all`
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getDiscussionById = async (id) => {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/discussion/single/${id}`
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
