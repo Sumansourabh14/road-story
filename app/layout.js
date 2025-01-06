@@ -8,6 +8,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import KeepServerAlive from "@/components/KeepServerAlive";
 import StoreProvider from "./StoreProvider";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -32,16 +33,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} antialiased`}
       >
         <StoreProvider>
-          <Navbar />
-          <KeepServerAlive />
-          {children}
-          <Footer />
-          <Toaster />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <KeepServerAlive />
+            {children}
+            <Footer />
+            <Toaster />
+          </ThemeProvider>
         </StoreProvider>
       </body>
     </html>

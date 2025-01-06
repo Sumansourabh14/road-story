@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../ui/button";
 import { logout } from "@/redux/slices/user";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,6 +28,7 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-6 md:items-center">
+          <ThemeToggle />
           <ListItemLink title={"Home"} destination={"/"} />
           <ListItemLink title={"Upload Video"} destination={"/upload/video"} />
           <ListItemLink title={"Videos"} destination={"/videos"} />
