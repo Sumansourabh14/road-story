@@ -84,6 +84,7 @@ const Navbar = () => {
               destination={"/upload/video"}
             />
             <ListItemLink title={"Videos"} destination={"/videos"} />
+            <ListItemLink title={"Discussions"} destination={"/discussions"} />
             {/* <ListItemLink title={"About"} destination={"/about"} /> */}
             {!!user ? (
               <li>
