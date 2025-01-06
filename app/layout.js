@@ -1,14 +1,13 @@
 import Footer from "@/components/customUi/Footer";
 import Navbar from "@/components/customUi/Navbar";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import { brandTitle } from "@/utils/content/generalSiteContent";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import KeepServerAlive from "@/components/KeepServerAlive";
 import StoreProvider from "./StoreProvider";
-import { ThemeProvider } from "@/components/ui/theme-provider";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -45,7 +44,6 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <Navbar />
-            <KeepServerAlive />
             {children}
             <Footer />
             <Toaster />
