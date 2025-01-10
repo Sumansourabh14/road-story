@@ -1,3 +1,4 @@
+import { X } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader } from "../ui/card";
 
@@ -10,14 +11,27 @@ const VideoUploader = ({
   return (
     <Card className="w-[100%] mx-auto mt-10 shadow-lg rounded-md">
       <CardHeader>
-        <label className="text-sm">Upload Your Video</label>
+        <section className="flex flex-row items-center justify-between">
+          <label className="text-sm">Upload Your Video</label>
+          {!!videoFile && (
+            <Button
+              onClick={handleRemoveVideo}
+              variant="icon"
+              className="p-2 rounded-md focus:outline-none focus:ring-2 hover:scale-125"
+              aria-label="Close"
+              title="Remove video"
+            >
+              <X className="h-12 w-12 text-gray-600 dark:text-gray-300" />
+            </Button>
+          )}
+        </section>
       </CardHeader>
       <CardContent>
         <div className="flex flex-col gap-4">
           {!videoFile && (
             <label
               htmlFor="file-input"
-              className="flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+              className="flex items-center justify-center px-4 py-2 text-sm font-medium border border-gray-500 rounded-lg cursor-pointer hover:border-dotted focus:outline-none focus:ring-offset-2"
             >
               Choose Video
             </label>
@@ -43,13 +57,6 @@ const VideoUploader = ({
                   Your browser does not support the video tag.
                 </video>
               )}
-              <Button
-                onClick={handleRemoveVideo}
-                variant="secondary"
-                className="mt-2"
-              >
-                Remove Video
-              </Button>
             </div>
           )}
         </div>
