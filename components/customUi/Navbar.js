@@ -19,10 +19,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-gray-300 font-[family-name:var(--font-inter)]">
+    <nav className="font-[family-name:var(--font-inter)]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Brand Logo */}
-        <Link href="/" className="text-xl font-bold text-white">
+        <Link href="/" className="text-xl font-bold">
           {brandTitle}
         </Link>
 
@@ -78,7 +78,7 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-gray-800">
+        <div className="md:hidden">
           <ul className="space-y-4 px-4 py-4">
             <ListItemLink title={"Home"} destination={"/"} />
             <ListItemLink
@@ -106,6 +106,7 @@ const Navbar = () => {
           </ul>
         </div>
       )}
+      <hr />
     </nav>
   );
 };

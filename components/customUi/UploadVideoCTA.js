@@ -1,6 +1,7 @@
 import Link from "next/link";
 import SectionTitle from "../text/SectionTitle";
 import { brandEmail, brandTitle } from "@/utils/content/generalSiteContent";
+import UploadVideoBig from "../buttons/UploadVideoBig";
 
 const UploadVideoCTA = () => {
   return (
@@ -15,12 +16,7 @@ const UploadVideoCTA = () => {
             {brandTitle}. <strong>No sign up required.</strong>
           </p>
           <div>
-            <Link
-              href={"/upload/video"}
-              className="px-20 py-6 bg-black text-white text-xl hover:bg-gray-700 rounded-lg font-bold"
-            >
-              Upload Video
-            </Link>
+            <UploadVideoBig />
           </div>
           <p className="text-center">
             Or send it on{" "}

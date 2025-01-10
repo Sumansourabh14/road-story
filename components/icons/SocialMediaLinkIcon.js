@@ -5,7 +5,7 @@ const SocialMediaLinkIcon = ({ destination, label, icon }) => {
   return (
     <Link
       href={destination}
-      className="hover:text-white transition"
+      className="hover:scale-105 transition"
       aria-label={label}
       target="_blank"
     >
