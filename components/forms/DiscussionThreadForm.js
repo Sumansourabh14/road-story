@@ -49,14 +49,11 @@ const DiscussionThreadForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-md space-y-4"
+      className="max-w-xl mx-auto p-6 rounded-lg shadow-md space-y-4"
     >
       {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
       <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="title" className="block text-sm font-medium">
           Title <span className="text-red-500">*</span>
         </label>
         <Input
@@ -70,10 +67,7 @@ const DiscussionThreadForm = () => {
       </div>
 
       <div>
-        <label
-          htmlFor="description"
-          className="block text-sm font-medium text-gray-700"
-        >
+        <label htmlFor="description" className="block text-sm font-medium">
           Description
         </label>
         <Textarea

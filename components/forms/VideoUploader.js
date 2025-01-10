@@ -8,7 +8,7 @@ const VideoUploader = ({
   handleRemoveVideo,
 }) => {
   return (
-    <Card className="max-w-md mx-auto mt-10 shadow-lg rounded-md">
+    <Card className="w-[100%] mx-auto mt-10 shadow-lg rounded-md">
       <CardHeader>
         <label className="text-sm">Upload Your Video</label>
       </CardHeader>

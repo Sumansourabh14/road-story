@@ -12,6 +12,7 @@ import VideoUploader from "./VideoUploader";
 import { useToast } from "@/hooks/use-toast";
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
 import { roadIncidents } from "@/utils/content/roadSafetyTerms";
+import { useRouter } from "next/navigation";
 
 export default function UploadVideoForm() {
   const [title, setTitle] = useState("");
@@ -22,6 +23,7 @@ export default function UploadVideoForm() {
   const [previewUrl, setPreviewUrl] = useState(null);
   const [incidentType, setIncidentType] = useState([]);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -103,6 +105,7 @@ export default function UploadVideoForm() {
             title: "Video uploaded successfully!",
             description: "The video will be visible to all users.",
           });
+          router.push("/videos");
         }
       } else {
         toast({
@@ -124,7 +127,7 @@ export default function UploadVideoForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4">
+    <div className="max-w-lg mx-auto p-4">
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title" className="block text-sm font-medium mb-1">
