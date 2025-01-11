@@ -23,7 +23,7 @@ const VideoDetailsCard = ({
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl font-bold mb-4">{title}</h1>
+        <h1 className="text-xl sm:text-3xl font-bold mb-4">{title}</h1>
 
         {/* Description */}
         {!!description && <p className="text-base mb-6">{description}</p>}
