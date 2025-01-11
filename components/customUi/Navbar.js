@@ -32,6 +32,7 @@ const Navbar = () => {
           <ListItemLink title={"Home"} destination={"/"} />
           <ListItemLink title={"Upload Video"} destination={"/upload/video"} />
           <ListItemLink title={"Videos"} destination={"/videos"} />
+          <ListItemLink title={"Maps"} destination={"/maps"} />
           <ListItemLink title={"Discussions"} destination={"/discussions"} />
           {/* <ListItemLink title={"About"} destination={"/about"} /> */}
           {!!user ? (
@@ -86,6 +87,7 @@ const Navbar = () => {
               destination={"/upload/video"}
             />
             <ListItemLink title={"Videos"} destination={"/videos"} />
+            <ListItemLink title={"Maps"} destination={"/maps"} />
             <ListItemLink title={"Discussions"} destination={"/discussions"} />
             {/* <ListItemLink title={"About"} destination={"/about"} /> */}
             {!!user ? (
