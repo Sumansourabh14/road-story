@@ -10,9 +10,9 @@ const VideoDetailsCard = ({
   location,
 }) => {
   return (
-    <div className="py-20 flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 p-6">
+    <div className="py-20 flex flex-col items-center justify-center p-6">
       {/* Card Container */}
-      <div className="max-w-3xl w-full bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
+      <div className="max-w-3xl w-full shadow-lg rounded-lg p-6">
         {/* Video Player */}
         <div className="aspect-video mb-6">
           <video
@@ -23,25 +23,16 @@ const VideoDetailsCard = ({
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
-          {title}
-        </h1>
+        <h1 className="text-3xl font-bold mb-4">{title}</h1>
 
         {/* Description */}
-        {!!description && (
-          <p className="text-gray-700 dark:text-gray-300 text-base mb-6">
-            {description}
-          </p>
-        )}
+        {!!description && <p className="text-base mb-6">{description}</p>}
 
         {/* Incident Type */}
         <div className="mb-6">
           <ul className="flex flex-wrap gap-2">
             {incidentType.map((type, index) => (
-              <li
-                key={index}
-                className="text-xs bg-zinc-200 px-2 py-1 rounded-full"
-              >
+              <li key={index} className="text-xs px-2 py-1 rounded-full">
                 {getIncidentType(type)}
               </li>
             ))}
@@ -54,9 +45,7 @@ const VideoDetailsCard = ({
             <div>
               <FontAwesomeIcon icon={faLocationDot} />
             </div>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              {location}
-            </p>
+            <p className="text-sm">{location}</p>
           </div>
         )}
       </div>
