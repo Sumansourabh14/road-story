@@ -1,3 +1,5 @@
+import { socket } from "../socket-io/socket";
+
 export const checkIfGeolocationAvailable = async (callback) => {
   if ("geolocation" in navigator) {
     return await callback();
@@ -30,6 +32,8 @@ export const watchLocation = () => {
     navigator.geolocation.watchPosition(
       (position) => {
         resolve(position.coords);
+        const { latitude, longitude } = position.coords;
+        socket.emit("send-location", { latitude, longitude });
       },
       (error) => {
         reject(error);

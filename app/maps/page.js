@@ -4,7 +4,9 @@ import CenteredPage from "@/components/customUi/layoutSections/CenteredPage";
 import {
   checkIfGeolocationAvailable,
   getCurrentLocation,
+  watchLocation,
 } from "@/utils/functions/geolocationFunctions";
+import { socket } from "@/utils/socket-io/socket";
 import { Loader2, MapPinOff } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useEffect, useMemo, useState } from "react";
@@ -39,9 +41,30 @@ const Maps = () => {
     }
   };
 
+  const keepWatchLocation = async () => {
+    try {
+      setLoading(true);
+      const currentDynamicLoc = await checkIfGeolocationAvailable(
+        watchLocation
+      );
+      setLocation(currentDynamicLoc);
+      setLoading(false);
+    } catch (error) {
+      setErrorMessage(error.message);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchLocation();
+    keepWatchLocation();
   }, []);
+
+  useEffect(() => {
+    socket.on("location", (data) => {
+      const { latitude, longitude } = data;
+      setLocation({ latitude, longitude });
+    });
+  }, [socket]);
 
   if (loading) {
     return (
@@ -68,13 +91,11 @@ const Maps = () => {
   }
 
   return (
-    // <CenteredPage>
     !!location && (
       <>
         <Map position={[location.latitude, location.longitude]} />
       </>
     )
-    // </CenteredPage>
   );
 };
 
