@@ -16,4 +16,13 @@ You can upload any dashcam, CCTV, normal video on this page: [Upload video](http
 
 ---
 
+## Resources Used
+
+- [Socket.IO](https://socket.io/)
+- [Leaflet Maps](https://leafletjs.com/)
+- <code>react-leaflet</code>
+- [Leaflet-providers map skins](https://leaflet-extras.github.io/leaflet-providers/preview/)
+
+---
+
 Built with [Next.js](https://nextjs.org) and [Redux Toolkit](https://redux-toolkit.js.org/)
