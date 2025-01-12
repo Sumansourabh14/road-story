@@ -1,9 +1,21 @@
 "use client";
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const UploadVideoBig = () => {
   const { theme } = useTheme();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Prevent rendering until the theme is resolved
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <Link
