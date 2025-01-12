@@ -7,11 +7,20 @@ export const metadata = {
   title: `Upload Video | ${brandTitle}`,
 };
 
-const UploadVideo = async () => {
+async function getData() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/data/road-safety-tips/random`
   );
-  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const UploadVideo = async () => {
+  const data = await getData();
 
   return (
     <CenteredPage>
