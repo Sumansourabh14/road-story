@@ -1,14 +1,17 @@
-"use client";
 import CenteredPage from "@/components/customUi/layoutSections/CenteredPage";
 import UploadVideoForm from "@/components/forms/UploadVideoForm";
 import SectionTitle from "@/components/text/SectionTitle";
 import { brandTitle } from "@/utils/content/generalSiteContent";
-import { useEffect } from "react";
 
-const UploadVideo = () => {
-  useEffect(() => {
-    document.title = `Upload Video | ${brandTitle}`;
-  }, []);
+export const metadata = {
+  title: `Upload Video | ${brandTitle}`,
+};
+
+const UploadVideo = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/data/road-safety-tips/random`
+  );
+  const data = await res.json();
 
   return (
     <CenteredPage>
@@ -19,7 +22,7 @@ const UploadVideo = () => {
           on Indian roads. No sign up required.
         </p>
       </div>
-      <UploadVideoForm />
+      <UploadVideoForm data={data} />
     </CenteredPage>
   );
 };

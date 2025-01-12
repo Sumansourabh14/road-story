@@ -1,20 +1,20 @@
 "use client";
-import { uploadVideoDetails } from "@/services/globalApi";
+import { useToast } from "@/hooks/use-toast";
+import { roadIncidents } from "@/utils/content/roadSafetyTerms";
 import { getFileUrl } from "@/utils/supabase/getFileUrl";
 import { uploadFile } from "@/utils/supabase/uploadFile";
 import { Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import VideoUploader from "./VideoUploader";
-import { useToast } from "@/hooks/use-toast";
 import { ToggleGroup, ToggleGroupItem } from "../ui/toggle-group";
-import { roadIncidents } from "@/utils/content/roadSafetyTerms";
-import { useRouter } from "next/navigation";
+import VideoUploader from "./VideoUploader";
+import { uploadVideoDetails } from "@/services/globalApi";
 
-export default function UploadVideoForm() {
+export default function UploadVideoForm({ data }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [videoFile, setVideoFile] = useState("");
@@ -220,9 +220,14 @@ export default function UploadVideoForm() {
         </Button>
       </form>
       {loading && (
-        <p className="py-8 text-center">
-          Saving the details... Don't close this page.
-        </p>
+        <div className="flex flex-col gap-8 text-center mt-8">
+          <hr />
+          <div className="space-y-4">
+            <p className="text-sm">Tip: {data.category}</p>
+            <p className="font-bold">{data.rule.description}</p>
+          </div>
+          <hr />
+        </div>
       )}
     </div>
   );
