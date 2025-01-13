@@ -112,6 +112,17 @@ export const createComment = async (data, token) => {
   }
 };
 
+export const getAllCommentsByDiscussionId = async (discussionId) => {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/all/${discussionId}`
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const getAllDiscussions = async () => {
   try {
     const response = await axios.get(
