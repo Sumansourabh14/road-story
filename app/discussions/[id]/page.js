@@ -1,6 +1,8 @@
 "use client";
 import DiscussionDetailsCard from "@/components/cards/DiscussionDetailsCard";
 import CenteredPage from "@/components/customUi/layoutSections/CenteredPage";
+import Comments from "@/components/displayData/Comments";
+import CommentForm from "@/components/forms/CommentForm";
 import { getDiscussionById } from "@/services/globalApi";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,7 +38,12 @@ const SingleDiscussion = () => {
 
   return (
     <CenteredPage>
-      <DiscussionDetailsCard discussion={data} />
+      <section className="space-y-4">
+        <DiscussionDetailsCard discussion={data} />
+        <CommentForm discussionId={id} />
+        <hr />
+        <Comments discussionId={id} />
+      </section>
     </CenteredPage>
   );
 };
