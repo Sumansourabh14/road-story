@@ -1,6 +1,7 @@
 "use client";
 import DiscussionDetailsCard from "@/components/cards/DiscussionDetailsCard";
 import CenteredPage from "@/components/customUi/layoutSections/CenteredPage";
+import CommentForm from "@/components/forms/CommentForm";
 import { getDiscussionById } from "@/services/globalApi";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -37,6 +38,7 @@ const SingleDiscussion = () => {
   return (
     <CenteredPage>
       <DiscussionDetailsCard discussion={data} />
+      <CommentForm discussionId={id} />
     </CenteredPage>
   );
 };
