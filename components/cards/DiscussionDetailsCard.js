@@ -1,3 +1,4 @@
+import DeleteDiscussionPopup from "../popups/DeleteDiscussionPopup";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 const DiscussionDetailsCard = ({
@@ -17,10 +18,16 @@ const DiscussionDetailsCard = ({
         {!!discussion.description && (
           <p className="mb-2">{discussion.description}</p>
         )}
-        <div className="flex justify-between items-center text-sm">
-          <span>{discussion.likes} likes</span>
+        <div className="flex gap-4 mt-4">
+          <div className="flex justify-between items-center text-sm">
+            <span>{discussion.likes} likes</span>
+          </div>
+          {isAuthorLoggedIn && (
+            <div>
+              <DeleteDiscussionPopup deleteDiscussion={deleteDiscussion} />
+            </div>
+          )}
         </div>
-        {isAuthorLoggedIn && <button onClick={deleteDiscussion}>Delete</button>}
       </CardContent>
     </Card>
   );
