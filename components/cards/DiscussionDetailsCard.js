@@ -1,6 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
-const DiscussionDetailsCard = ({ discussion }) => {
+const DiscussionDetailsCard = ({
+  discussion,
+  isAuthorLoggedIn = false,
+  deleteDiscussion,
+}) => {
   return (
     <Card className="border shadow-sm">
       <CardHeader>
@@ -16,6 +20,7 @@ const DiscussionDetailsCard = ({ discussion }) => {
         <div className="flex justify-between items-center text-sm">
           <span>{discussion.likes} likes</span>
         </div>
+        {isAuthorLoggedIn && <button onClick={deleteDiscussion}>Delete</button>}
       </CardContent>
     </Card>
   );

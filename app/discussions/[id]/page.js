@@ -3,14 +3,34 @@ import DiscussionDetailsCard from "@/components/cards/DiscussionDetailsCard";
 import CenteredPage from "@/components/customUi/layoutSections/CenteredPage";
 import Comments from "@/components/displayData/Comments";
 import CommentForm from "@/components/forms/CommentForm";
-import { getDiscussionById } from "@/services/globalApi";
-import { useParams } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
+import {
+  getDiscussionById,
+  removeDiscussionThread,
+} from "@/services/globalApi";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const SingleDiscussion = () => {
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const { user, token } = useSelector((state) => state.auth);
+  const { toast } = useToast();
+  const router = useRouter();
+
+  const deleteDiscussion = async (id, token) => {
+    const res = await removeDiscussionThread(id, token);
+
+    if (res.status === 200) {
+      toast({
+        title: "Discussion removed successfully",
+        description: "You will be redirected to the discussions page",
+      });
+      router.push("/discussions");
+    }
+  };
 
   useEffect(() => {
     let mounted = true;
@@ -39,7 +59,11 @@ const SingleDiscussion = () => {
   return (
     <CenteredPage>
       <section className="space-y-4">
-        <DiscussionDetailsCard discussion={data} />
+        <DiscussionDetailsCard
+          discussion={data}
+          isAuthorLoggedIn={user?._id === data?.author?._id}
+          deleteDiscussion={() => deleteDiscussion(id, token)}
+        />
         <CommentForm discussionId={id} />
         <hr />
         <Comments discussionId={id} />
