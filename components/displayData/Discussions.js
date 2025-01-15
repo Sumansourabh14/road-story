@@ -21,7 +21,16 @@ const Discussions = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="mb-2">
+              <p
+                className="mb-2 text-sm"
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  display: "-webkit-box",
+                  WebkitLineClamp: "3", // how many lines we want to show
+                  WebkitBoxOrient: "vertical",
+                }}
+              >
                 {discussion.description || "No description provided."}
               </p>
               <div className="flex justify-between items-center text-sm">
