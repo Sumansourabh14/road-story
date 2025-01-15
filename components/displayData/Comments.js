@@ -1,11 +1,27 @@
 "use client";
 
+import { useToast } from "@/hooks/use-toast";
 import useFetchCommentsByDiscussionId from "@/hooks/useFetchCommentsByDiscussionId";
+import { removeComment } from "@/services/globalApi";
+import { useSelector } from "react-redux";
+import DeleteCommentPopup from "../popups/DeleteCommentPopup";
 import { Card, CardContent } from "../ui/card";
 
 const Comments = ({ discussionId }) => {
   const { comments, commentsLoading } =
     useFetchCommentsByDiscussionId(discussionId);
+  const { toast } = useToast();
+  const { user, token } = useSelector((state) => state.auth);
+
+  const handleDeleteComment = async (commentId) => {
+    const res = await removeComment(commentId, discussionId, token);
+
+    if (res.status === 200) {
+      toast({
+        title: "Comment removed successfully!",
+      });
+    }
+  };
 
   if (commentsLoading) return <p>Loading comments...</p>;
 
@@ -25,6 +41,11 @@ const Comments = ({ discussionId }) => {
                 {comment.author.username}
               </span>
               <span>{comment.likes} likes</span>
+              {user._id === comment.author._id && (
+                <DeleteCommentPopup
+                  handleDelete={() => handleDeleteComment(comment._id)}
+                />
+              )}
             </div>
           </CardContent>
         </Card>

@@ -111,6 +111,22 @@ export const removeDiscussionThread = async (discussionId, token) => {
   }
 };
 
+export const removeComment = async (commentId, discussionId, token) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/delete/${commentId}/${discussionId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const createComment = async (data, token) => {
   try {
     const response = await axios.post(
