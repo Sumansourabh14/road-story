@@ -1,12 +1,12 @@
 "use client";
 
+import { useToast } from "@/hooks/use-toast";
 import { createComment } from "@/services/globalApi";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import LoadingButton from "../buttons/LoadingButton";
 import { Textarea } from "../ui/textarea";
-import { useSelector } from "react-redux";
-import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
 
 const CommentForm = ({ discussionId }) => {
   const [description, setDescription] = useState("");
@@ -36,7 +36,7 @@ const CommentForm = ({ discussionId }) => {
 
       const res = await createComment(payload, token);
 
-      if (res.status === 200) {
+      if (res.status === 201) {
         toast({
           title: "Comment added successfully!",
         });

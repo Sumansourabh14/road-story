@@ -8,7 +8,7 @@ import DeleteCommentPopup from "../popups/DeleteCommentPopup";
 import { Card, CardContent } from "../ui/card";
 
 const Comments = ({ discussionId }) => {
-  const { comments, commentsLoading } =
+  const { comments, commentsLoading, fetchLatestComments } =
     useFetchCommentsByDiscussionId(discussionId);
   const { toast } = useToast();
   const { user, token } = useSelector((state) => state.auth);
@@ -20,6 +20,8 @@ const Comments = ({ discussionId }) => {
       toast({
         title: "Comment removed successfully!",
       });
+
+      await fetchLatestComments();
     }
   };
 

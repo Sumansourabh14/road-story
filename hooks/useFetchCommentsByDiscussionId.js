@@ -28,7 +28,12 @@ const useFetchCommentsByDiscussionId = (discussionId) => {
     };
   }, [discussionId]);
 
-  return { comments, commentsLoading };
+  const fetchLatestComments = async () => {
+    const res = await getAllCommentsByDiscussionId(discussionId);
+    setComments(res.data.data);
+  };
+
+  return { comments, commentsLoading, fetchLatestComments };
 };
 
 export default useFetchCommentsByDiscussionId;
