@@ -6,6 +6,7 @@ import LoadingButton from "../buttons/LoadingButton";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const DiscussionThreadForm = () => {
   const [title, setTitle] = useState("");
@@ -14,6 +15,7 @@ const DiscussionThreadForm = () => {
   const [error, setError] = useState("");
   const { user, token } = useSelector((state) => state.auth);
   const { toast } = useToast();
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +40,7 @@ const DiscussionThreadForm = () => {
         description:
           "Go to the discussions page to view all discussion threads.",
       });
+      router.push("/discussions");
     }
     setLoading(false);
 
