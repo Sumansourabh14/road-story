@@ -16,13 +16,14 @@ const Discussions = () => {
         <Link key={discussion._id} href={`/discussions/${discussion._id}`}>
           <Card className="border shadow-sm">
             <CardHeader>
+              <span className="text-sm">{discussion.author.username}</span>
               <CardTitle className="text-xl font-semibold">
                 {discussion.title}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p
-                className="mb-2 text-sm"
+                className="mb-4 text-sm"
                 style={{
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -33,9 +34,9 @@ const Discussions = () => {
               >
                 {discussion.description || "No description provided."}
               </p>
-              <div className="flex justify-between items-center text-sm">
-                <span>By: {discussion.author.username}</span>
+              <div className="flex gap-4 text-sm font-light">
                 <span>{discussion.likes} likes</span>
+                <span>{discussion.comments.length} comments</span>
               </div>
             </CardContent>
           </Card>

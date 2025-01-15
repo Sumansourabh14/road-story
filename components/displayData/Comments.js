@@ -35,11 +35,9 @@ const Comments = ({ discussionId }) => {
       {comments.map((comment) => (
         <Card className="pt-6" key={comment._id}>
           <CardContent>
+            <p className="text-sm font-light mb-4">{comment.author.username}</p>
             <p className="mb-2">{comment.description}</p>
             <div className="flex justify-between items-center text-sm">
-              <span className="text-sm font-light">
-                {comment.author.username}
-              </span>
               <span>{comment.likes} likes</span>
               {user._id === comment.author._id && (
                 <DeleteCommentPopup

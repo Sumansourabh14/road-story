@@ -18,9 +18,9 @@ const DiscussionDetailsCard = ({
         {!!discussion.description && (
           <p className="mb-2">{discussion.description}</p>
         )}
-        <div className="flex gap-4 mt-4">
-          <div className="flex justify-between items-center text-sm">
-            <span>{discussion.likes} likes</span>
+        <div className="flex gap-4 justify-between items-center mt-4">
+          <div className="text-sm">
+            <p>{discussion.likes} likes</p>
           </div>
           {isAuthorLoggedIn && (
             <div>

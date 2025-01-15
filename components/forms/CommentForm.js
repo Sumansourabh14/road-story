@@ -50,7 +50,6 @@ const CommentForm = ({ discussionId }) => {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-xl py-8 space-y-4">
-      <hr />
       {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
       <div>
         <label htmlFor="description" className="block text-sm font-medium">
