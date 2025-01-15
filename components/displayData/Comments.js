@@ -41,7 +41,7 @@ const Comments = ({ discussionId }) => {
             <p className="mb-2">{comment.description}</p>
             <div className="flex justify-between items-center text-sm">
               <span>{comment.likes} likes</span>
-              {user._id === comment.author._id && (
+              {user?._id === comment.author._id && (
                 <DeleteCommentPopup
                   handleDelete={() => handleDeleteComment(comment._id)}
                 />
