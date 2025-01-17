@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const SingleDiscussion = () => {
+  const [url, setUrl] = useState("");
   const [data, setData] = useState("");
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -52,6 +53,12 @@ const SingleDiscussion = () => {
     };
   }, [id]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUrl(window.location.href); // set the URL on the client side
+    }
+  }, [id]);
+
   if (loading) {
     return <p className="text-center text-gray-500">Loading...</p>;
   }
@@ -63,6 +70,7 @@ const SingleDiscussion = () => {
           discussion={data}
           isAuthorLoggedIn={user?._id === data?.author?._id}
           deleteDiscussion={() => deleteDiscussion(id, token)}
+          url={url}
         />
         <CommentForm discussionId={id} />
         <hr />
