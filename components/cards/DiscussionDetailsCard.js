@@ -1,3 +1,4 @@
+import LikeIcon from "../icons/LikeIcon";
 import DeleteDiscussionPopup from "../popups/DeleteDiscussionPopup";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
@@ -19,8 +20,9 @@ const DiscussionDetailsCard = ({
           <p className="mb-2">{discussion.description}</p>
         )}
         <div className="flex gap-4 justify-between items-center mt-4">
-          <div className="text-sm">
-            <p>{discussion.likes} likes</p>
+          <div className="flex flex-row gap-2 items-center">
+            <p className="text-sm">{discussion.likes}</p>
+            <LikeIcon />
           </div>
           {isAuthorLoggedIn && (
             <div>

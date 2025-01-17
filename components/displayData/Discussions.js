@@ -2,6 +2,8 @@
 import useFetchDiscussions from "@/hooks/useFetchDiscussions";
 import Link from "next/link";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import LikeIcon from "../icons/LikeIcon";
+import CommentIcon from "../icons/CommentIcon";
 
 const Discussions = () => {
   const { discussions, loading } = useFetchDiscussions();
@@ -35,8 +37,15 @@ const Discussions = () => {
                 {discussion.description || "No description provided."}
               </p>
               <div className="flex gap-4 text-sm font-light">
-                <span>{discussion.likes} likes</span>
-                <span>{discussion.comments.length} comments</span>
+                <div className="flex flex-row gap-2 items-center">
+                  <p>{discussion.likes}</p>
+                  <LikeIcon />
+                </div>
+
+                <div className="flex flex-row gap-2 items-center">
+                  <p>{discussion.comments.length}</p>
+                  <CommentIcon />
+                </div>
               </div>
             </CardContent>
           </Card>
