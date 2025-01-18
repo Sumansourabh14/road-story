@@ -15,13 +15,13 @@ const DiscussionDetailsCard = ({
     <Card className="border shadow-sm">
       <CardHeader>
         <p>{discussion.author?.username}</p>
-        <CardTitle className="text-2xl font-semibold mt-4">
+        <CardTitle className="text-2xl font-semibold mt-4 break-words">
           {discussion.title}
         </CardTitle>
       </CardHeader>
       <CardContent>
         {!!discussion.description && (
-          <p className="mb-2">{discussion.description}</p>
+          <p className="mb-2 break-words">{discussion.description}</p>
         )}
         <div className="flex gap-4 justify-between items-center mt-4">
           <div className="flex gap-4 items-center">

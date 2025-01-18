@@ -19,13 +19,13 @@ const Discussions = () => {
           <Card className="border shadow-sm">
             <CardHeader>
               <span className="text-sm">{discussion.author.username}</span>
-              <CardTitle className="text-xl font-semibold">
+              <CardTitle className="text-xl font-semibold break-words">
                 {discussion.title}
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p
-                className="mb-4 text-sm"
+                className="mb-4 text-sm break-words"
                 style={{
                   overflow: "hidden",
                   textOverflow: "ellipsis",
