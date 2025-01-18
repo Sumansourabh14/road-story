@@ -3,6 +3,7 @@ import {
   AlignLeft,
   AlignRight,
   Bold,
+  Highlighter,
   Italic,
   List,
   ListOrdered,
@@ -28,25 +29,29 @@ const tools = [
     task: "underline",
     icon: <Underline className="h-4 w-4" />,
   },
+  //   {
+  //     task: "left",
+  //     icon: <AlignLeft className="h-4 w-4" />,
+  //   },
+  //   {
+  //     task: "center",
+  //     icon: <AlignCenter className="h-4 w-4" />,
+  //   },
+  //   {
+  //     task: "right",
+  //     icon: <AlignRight className="h-4 w-4" />,
+  //   },
+  //   {
+  //     task: "bulletList",
+  //     icon: <List className="h-4 w-4" />,
+  //   },
+  //   {
+  //     task: "orderedList",
+  //     icon: <ListOrdered className="h-4 w-4" />,
+  //   },
   {
-    task: "left",
-    icon: <AlignLeft className="h-4 w-4" />,
-  },
-  {
-    task: "center",
-    icon: <AlignCenter className="h-4 w-4" />,
-  },
-  {
-    task: "right",
-    icon: <AlignRight className="h-4 w-4" />,
-  },
-  {
-    task: "bulletList",
-    icon: <List className="h-4 w-4" />,
-  },
-  {
-    task: "list",
-    icon: <ListOrdered className="h-4 w-4" />,
+    task: "highlight",
+    icon: <Highlighter className="h-4 w-4" />,
   },
 ];
 
@@ -65,6 +70,14 @@ const Toolbar = ({ editor }) => {
         return chainMethods(editor, (chain) => chain.toggleItalic());
       case "underline":
         return chainMethods(editor, (chain) => chain.toggleUnderline());
+      case "strike":
+        return chainMethods(editor, (chain) => chain.toggleStrike());
+      case "highlight":
+        return chainMethods(editor, (chain) => chain.toggleHighlight());
+      case "bulletList":
+        return chainMethods(editor, (chain) => chain.toggleBulletList());
+      case "orderedList":
+        return chainMethods(editor, (chain) => chain.toggleOrderedList());
     }
   };
 

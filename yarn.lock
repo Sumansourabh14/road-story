@@ -937,6 +937,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-heading/-/extension-heading-2.11.2.tgz#f0aa459204ba4a45d36830eafae2f8430e854a48"
   integrity sha512-y/wAEXYB0a8y5WmSYGCIXAhus1ydudn0pokKIzT/OD00XutAVh14qOB5h/+m8iXwGU/UYMP7SUCtK82txZqwKA==
 
+"@tiptap/extension-highlight@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-highlight/-/extension-highlight-2.11.2.tgz#f78983063a0d87d203ba5dce116f6ae73ad2bb37"
+  integrity sha512-ztq2lGthTIY/zPYtdYrG7+0dc4R4abkZqDVAmLxkFcwjs/mejq7nMG7WM2Unn2cIGo96m8Ibz/UtoOPJDt/+/Q==
+
 "@tiptap/extension-history@^2.11.2":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-history/-/extension-history-2.11.2.tgz#62820dcb50863ccc4f482b295e2ee17c2c66b43e"
@@ -967,6 +972,11 @@
   resolved "https://registry.yarnpkg.com/@tiptap/extension-paragraph/-/extension-paragraph-2.11.2.tgz#b4e99129b1c5959e2926b9563ced89755e0d4d81"
   integrity sha512-iydTjeZbPJuqctOaAx7QebLPvz9J/hBxPptuhe4GZmqInknAk7+SFJagYeGNb14wfXKOvDZ9DMqv6mBiqSA90Q==
 
+"@tiptap/extension-placeholder@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-placeholder/-/extension-placeholder-2.11.2.tgz#de68ef4932141d6344b0c75f18916249c387883b"
+  integrity sha512-7rv6nylqX57Q+K+AH794Kg9U7OrLyujhXXqQvd9iZdBP7bTCNUlFu0cGlIyHdM/eWJjoUblZs0VLV2IApk4xjQ==
+
 "@tiptap/extension-strike@^2.11.2":
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-strike/-/extension-strike-2.11.2.tgz#9b5b698da5a024219e2ecf438c3b503d9b812fbe"
@@ -981,6 +991,11 @@
   version "2.11.2"
   resolved "https://registry.yarnpkg.com/@tiptap/extension-text/-/extension-text-2.11.2.tgz#743352716de6288191cd336fa1d676c391acda52"
   integrity sha512-fJZeKYM5jeJ7NpS3FWLnC/NAvg+mZNbcTaRgXMo5ljBCgiMcYHhYg9p/RHk4SeICZBBpR9WSSZXHMACd9CbJiA==
+
+"@tiptap/extension-underline@^2.11.2":
+  version "2.11.2"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-underline/-/extension-underline-2.11.2.tgz#e6bb61ddbd48100b3b4de33822e24f766f7825bd"
+  integrity sha512-Gq7hfV3D/3E1zoE6JXSYZ3boKfbjebFu7IuQZ6w6QSS/IkGN8c6kW+WtkhOKN3jV7Z5uF5KIVp3XCqNIwChWNQ==
 
 "@tiptap/pm@^2.11.2":
   version "2.11.2"
