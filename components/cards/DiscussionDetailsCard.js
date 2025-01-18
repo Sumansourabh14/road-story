@@ -23,12 +23,12 @@ const DiscussionDetailsCard = ({
       <CardContent>
         {!!discussion.description && (
           <div
-            className="mb-2 break-words"
+            className="custom-desc mb-2 break-words"
             dangerouslySetInnerHTML={{ __html: discussion.description }}
           ></div>
         )}
         <div className="flex gap-4 justify-between items-center mt-4">
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center ">
             <div className="flex flex-row gap-2 items-center">
               <p className="text-sm">{discussion.likes}</p>
               <LikeIcon />

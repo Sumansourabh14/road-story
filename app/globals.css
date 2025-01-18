@@ -91,3 +91,15 @@ body {
   font-size: 0.875rem;
   padding: 2px 4px;
 }
+
+.tiptap p {
+  margin-bottom: 0.8rem;
+}
+
+.custom-desc p {
+  margin-bottom: 0.8rem;
+}
+
+.custom-desc img {
+  margin-bottom: 0.8rem;
+}

@@ -1,13 +1,15 @@
 "use client";
 
 import Highlight from "@tiptap/extension-highlight";
+import Image from "@tiptap/extension-image";
+import ListItem from "@tiptap/extension-list-item";
+import OrderedList from "@tiptap/extension-ordered-list";
+import Placeholder from "@tiptap/extension-placeholder";
 import Underline from "@tiptap/extension-underline";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
-import ListItem from "@tiptap/extension-list-item";
-import OrderedList from "@tiptap/extension-ordered-list";
-import Placeholder from "@tiptap/extension-placeholder";
+import { useSelector } from "react-redux";
 
 const Tiptap = ({ content, onChange }) => {
   const editor = useEditor({
@@ -17,6 +19,12 @@ const Tiptap = ({ content, onChange }) => {
       Highlight,
       OrderedList,
       ListItem,
+      Image.configure({
+        inline: false, // Use block images
+        HTMLAttributes: {
+          class: "max-w-[500px] mx-auto",
+        },
+      }),
       Placeholder.configure({
         placeholder: "Enter a description...",
       }),
@@ -28,9 +36,11 @@ const Tiptap = ({ content, onChange }) => {
     },
   });
 
+  const { images } = useSelector((state) => state.images);
+
   return (
     <div className="flex flex-col space-y-4">
-      <Toolbar editor={editor} />
+      <Toolbar editor={editor} images={images} />
       <EditorContent editor={editor} />
     </div>
   );
