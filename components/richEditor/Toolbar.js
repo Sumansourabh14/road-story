@@ -4,6 +4,7 @@ import {
   AlignRight,
   Bold,
   Highlighter,
+  ImagePlus,
   Italic,
   List,
   ListOrdered,
@@ -11,6 +12,7 @@ import {
   Underline,
 } from "lucide-react";
 import ToolButton from "./ToolButton";
+import UploadImagePopup from "../popups/UploadImagePopup";
 
 const tools = [
   {
@@ -92,6 +94,10 @@ const Toolbar = ({ editor }) => {
           {tool.icon}
         </ToolButton>
       ))}
+      <UploadImagePopup
+        editor={editor}
+        handleActiveClick={() => handleActiveClick("image")}
+      />
     </div>
   );
 };

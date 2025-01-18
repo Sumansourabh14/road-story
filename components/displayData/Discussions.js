@@ -25,7 +25,7 @@ const Discussions = () => {
             </CardHeader>
             <CardContent>
               <div
-                className="mb-4 text-sm break-words"
+                className="custom-desc mb-4 text-sm break-words"
                 style={{
                   overflow: "hidden",
                   textOverflow: "ellipsis",
