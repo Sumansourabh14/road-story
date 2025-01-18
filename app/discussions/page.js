@@ -8,7 +8,7 @@ const DiscussionsPage = () => {
     <CenteredPage>
       <section className="text-center mb-16">
         <PageTitle title="Discussions" />
-        <div className="mt-8">
+        <div className="mt-12">
           <Link
             href={"/discussions/create"}
             className="px-20 py-4 bg-black text-white text-xl hover:bg-gray-700 rounded-lg font-bold"
