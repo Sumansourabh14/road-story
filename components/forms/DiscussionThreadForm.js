@@ -1,12 +1,12 @@
 "use client";
+import { useToast } from "@/hooks/use-toast";
 import { createDiscussionThread } from "@/services/globalApi";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import LoadingButton from "../buttons/LoadingButton";
+import Tiptap from "../richEditor/Tiptap";
 import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
 
 const DiscussionThreadForm = () => {
   const [title, setTitle] = useState("");
@@ -73,14 +73,9 @@ const DiscussionThreadForm = () => {
         <label htmlFor="description" className="block text-sm font-medium">
           Description
         </label>
-        <Textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="Enter a description (optional)"
-          className="mt-1"
-          rows={4}
-        />
+        <div className="mt-2">
+          <Tiptap content={description} onChange={setDescription} />
+        </div>
       </div>
 
       <LoadingButton

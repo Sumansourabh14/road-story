@@ -24,7 +24,7 @@ const Discussions = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p
+              <div
                 className="mb-4 text-sm break-words"
                 style={{
                   overflow: "hidden",
@@ -33,9 +33,8 @@ const Discussions = () => {
                   WebkitLineClamp: "3", // how many lines we want to show
                   WebkitBoxOrient: "vertical",
                 }}
-              >
-                {discussion.description || "No description provided."}
-              </p>
+                dangerouslySetInnerHTML={{ __html: discussion.description }}
+              ></div>
               <div className="flex gap-4 text-sm font-light">
                 <div className="flex flex-row gap-2 items-center">
                   <p>{discussion.likes}</p>

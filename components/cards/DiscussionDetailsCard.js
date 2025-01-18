@@ -1,3 +1,4 @@
+import { sendHTMLShare } from "@/utils/functions/sendHTMLShare";
 import TwitterShare from "../buttons/shareButtons/TwitterShare";
 import WhatsAppShare from "../buttons/shareButtons/WhatsAppShare";
 import LikeIcon from "../icons/LikeIcon";
@@ -21,7 +22,10 @@ const DiscussionDetailsCard = ({
       </CardHeader>
       <CardContent>
         {!!discussion.description && (
-          <p className="mb-2 break-words">{discussion.description}</p>
+          <div
+            className="mb-2 break-words"
+            dangerouslySetInnerHTML={{ __html: discussion.description }}
+          ></div>
         )}
         <div className="flex gap-4 justify-between items-center mt-4">
           <div className="flex gap-4 items-center">
@@ -35,11 +39,19 @@ const DiscussionDetailsCard = ({
             >
               <div className="flex flex-row justify-center items-center gap-4 w-full">
                 <TwitterShare
-                  title={discussion.title + "\n\n" + discussion.description}
+                  title={
+                    discussion.title +
+                    "\n\n" +
+                    sendHTMLShare(discussion.description)
+                  }
                   url={!!url ? url : " "}
                 />
                 <WhatsAppShare
-                  title={discussion.title + "\n\n" + discussion.description}
+                  title={
+                    discussion.title +
+                    "\n\n" +
+                    sendHTMLShare(discussion.description)
+                  }
                   url={!!url ? url : " "}
                 />
               </div>
