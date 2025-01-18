@@ -1,12 +1,13 @@
 "use client";
+import { useToast } from "@/hooks/use-toast";
 import { createDiscussionThread } from "@/services/globalApi";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import LoadingButton from "../buttons/LoadingButton";
+import Tiptap from "../richEditor/Tiptap";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
 
 const DiscussionThreadForm = () => {
   const [title, setTitle] = useState("");
@@ -82,6 +83,8 @@ const DiscussionThreadForm = () => {
           rows={4}
         />
       </div>
+
+      <Tiptap />
 
       <LoadingButton
         loading={loading}
