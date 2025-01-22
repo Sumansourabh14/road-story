@@ -31,18 +31,18 @@ const tools = [
     task: "underline",
     icon: <Underline className="h-4 w-4" />,
   },
-  //   {
-  //     task: "left",
-  //     icon: <AlignLeft className="h-4 w-4" />,
-  //   },
-  //   {
-  //     task: "center",
-  //     icon: <AlignCenter className="h-4 w-4" />,
-  //   },
-  //   {
-  //     task: "right",
-  //     icon: <AlignRight className="h-4 w-4" />,
-  //   },
+  {
+    task: "left",
+    icon: <AlignLeft className="h-4 w-4" />,
+  },
+  {
+    task: "center",
+    icon: <AlignCenter className="h-4 w-4" />,
+  },
+  {
+    task: "right",
+    icon: <AlignRight className="h-4 w-4" />,
+  },
   //   {
   //     task: "bulletList",
   //     icon: <List className="h-4 w-4" />,
@@ -80,6 +80,12 @@ const Toolbar = ({ editor }) => {
         return chainMethods(editor, (chain) => chain.toggleBulletList());
       case "orderedList":
         return chainMethods(editor, (chain) => chain.toggleOrderedList());
+      case "left":
+        return chainMethods(editor, (chain) => chain.setTextAlign("left"));
+      case "center":
+        return chainMethods(editor, (chain) => chain.setTextAlign("center"));
+      case "right":
+        return chainMethods(editor, (chain) => chain.setTextAlign("right"));
     }
   };
 
@@ -88,7 +94,10 @@ const Toolbar = ({ editor }) => {
       {tools.map((tool) => (
         <ToolButton
           key={tool.task}
-          active={editor?.isActive(tool.task)}
+          active={
+            editor?.isActive(tool.task) ||
+            editor?.isActive({ textAlign: tool.task })
+          }
           onClick={() => handleActiveClick(tool.task)}
         >
           {tool.icon}

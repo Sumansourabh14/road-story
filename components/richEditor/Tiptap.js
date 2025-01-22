@@ -10,6 +10,7 @@ import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Toolbar from "./Toolbar";
 import { useSelector } from "react-redux";
+import TextAlign from "@tiptap/extension-text-align";
 
 const Tiptap = ({ content, onChange }) => {
   const editor = useEditor({
@@ -19,6 +20,9 @@ const Tiptap = ({ content, onChange }) => {
       Highlight,
       OrderedList,
       ListItem,
+      TextAlign.configure({
+        types: ["heading", "paragraph"],
+      }),
       Image.configure({
         inline: false, // Use block images
         HTMLAttributes: {
