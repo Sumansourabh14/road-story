@@ -1,8 +1,9 @@
 import { Button } from "../ui/button";
 
-const ToolButton = ({ onClick, children, active }) => {
+const ToolButton = ({ onClick, children, active, title }) => {
   return (
     <Button
+      title={title}
       type="button"
       onClick={onClick}
       className={`p-2 ${

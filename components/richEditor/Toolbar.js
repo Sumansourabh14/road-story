@@ -94,6 +94,7 @@ const Toolbar = ({ editor }) => {
       {tools.map((tool) => (
         <ToolButton
           key={tool.task}
+          title={tool.task}
           active={
             editor?.isActive(tool.task) ||
             editor?.isActive({ textAlign: tool.task })
