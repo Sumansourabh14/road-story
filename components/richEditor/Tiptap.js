@@ -45,7 +45,10 @@ const Tiptap = ({ content, onChange }) => {
   return (
     <div className="flex flex-col space-y-4">
       <Toolbar editor={editor} images={images} />
-      <EditorContent editor={editor} />
+      <EditorContent
+        editor={editor}
+        className="border border-gray-300 rounded-md p-2 focus:outline-none"
+      />
     </div>
   );
 };
