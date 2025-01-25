@@ -144,10 +144,54 @@ export const createComment = async (data, token) => {
   }
 };
 
+export const createCommentReply = async (data, token) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/create-comment-reply`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const removeCommentReply = async (commentId, parentCommentId, token) => {
+  try {
+    const response = await axios.delete(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/delete/reply/${parentCommentId}/${commentId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const getAllCommentsByDiscussionId = async (discussionId) => {
   try {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/all/${discussionId}`
+    );
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getAllRepliesByCommentId = async (commentId) => {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/all/replies/${commentId}`
     );
     return response;
   } catch (error) {

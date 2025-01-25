@@ -1,13 +1,13 @@
 "use client";
 
 import { useToast } from "@/hooks/use-toast";
-import { createComment } from "@/services/globalApi";
+import { createCommentReply } from "@/services/globalApi";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import AddComment from "./AddComment";
 
-const CommentForm = ({ discussionId }) => {
+const CommentReplyForm = ({ discussionId, parentCommentId }) => {
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -22,25 +22,27 @@ const CommentForm = ({ discussionId }) => {
       setLoading(true);
 
       if (!user) {
-        setError("Please login to add a comment");
+        setError("Please login to add a comment reply");
         setLoading(false);
         router.push("/login");
       }
 
       const payload = {
+        parentCommentId,
         description,
         authorId: user._id,
         discussionId,
       };
 
-      const res = await createComment(payload, token);
+      const res = await createCommentReply(payload, token);
 
       if (res.status === 201) {
         toast({
-          title: "Comment added successfully!",
+          title: "Comment reply added successfully!",
         });
       }
     } catch (error) {
+      console.log(error);
     } finally {
       setLoading(false);
       setDescription("");
@@ -49,16 +51,16 @@ const CommentForm = ({ discussionId }) => {
 
   return (
     <AddComment
-      descriptionPlaceholder="Any thoughts on this?"
-      label="Comment"
+      label="Reply"
+      descriptionPlaceholder="Share your thoughts..."
       error={error}
       handleAddComment={handleSubmit}
       loading={loading}
-      buttonTitle="Add Comment"
+      buttonTitle="Add Reply"
       description={description}
       handleDescriptionChange={(e) => setDescription(e.target.value)}
     />
   );
 };
 
-export default CommentForm;
+export default CommentReplyForm;

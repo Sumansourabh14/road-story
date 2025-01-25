@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const useFetchCommentsByDiscussionId = (discussionId) => {
   const [comments, setComments] = useState([]);
+  const [totalComments, setTotalComments] = useState("");
   const [commentsLoading, setCommentsLoading] = useState(false);
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const useFetchCommentsByDiscussionId = (discussionId) => {
 
       if (mounted) {
         setComments(res.data.data);
+        setTotalComments(res.data.totalComments);
         setCommentsLoading(false);
       }
     }
@@ -33,7 +35,7 @@ const useFetchCommentsByDiscussionId = (discussionId) => {
     setComments(res.data.data);
   };
 
-  return { comments, commentsLoading, fetchLatestComments };
+  return { comments, totalComments, commentsLoading, fetchLatestComments };
 };
 
 export default useFetchCommentsByDiscussionId;
