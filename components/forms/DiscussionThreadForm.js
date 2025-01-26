@@ -38,7 +38,7 @@ const DiscussionThreadForm = () => {
         description:
           "Go to the discussions page to view all discussion threads.",
       });
-      router.push("/discussions");
+      router.push(`/discussions/${res.data.data._id}`);
     }
     setLoading(false);
 
