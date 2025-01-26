@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import LikeIcon from "../icons/LikeIcon";
 import DeleteCommentPopup from "../popups/DeleteCommentPopup";
 import { Card, CardContent } from "../ui/card";
+import DisplayUsernamePublishedTime from "./DisplayUsernamePublishedTime";
 
 const Replies = ({ commentId, discussionId }) => {
   const { replies, repliesLoading, fetchLatestReplies } =
@@ -38,8 +39,11 @@ const Replies = ({ commentId, discussionId }) => {
       {replies.map((comment) => (
         <Card className="pt-6" key={comment._id}>
           <CardContent>
-            <p className="text-sm font-light mb-4">{comment.author.username}</p>
-            <p className="mb-2 break-words">{comment.description}</p>
+            <DisplayUsernamePublishedTime
+              username={comment.author.username}
+              createdAt={comment.createdAt}
+              updatedAt={comment.updatedAt}
+            />
             <div className="flex justify-between items-center text-sm">
               <div className="flex items-center gap-4">
                 <div className="flex flex-row gap-2 items-center">

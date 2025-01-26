@@ -1,9 +1,10 @@
 "use client";
 import useFetchDiscussions from "@/hooks/useFetchDiscussions";
 import Link from "next/link";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import LikeIcon from "../icons/LikeIcon";
 import CommentIcon from "../icons/CommentIcon";
+import LikeIcon from "../icons/LikeIcon";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import DisplayUsernamePublishedTime from "./DisplayUsernamePublishedTime";
 
 const Discussions = () => {
   const { discussions, loading } = useFetchDiscussions();
@@ -18,7 +19,11 @@ const Discussions = () => {
         <Link key={discussion._id} href={`/discussions/${discussion._id}`}>
           <Card className="border shadow-sm">
             <CardHeader>
-              <span className="text-sm">{discussion.author.username}</span>
+              <DisplayUsernamePublishedTime
+                username={discussion.author?.username}
+                createdAt={discussion.createdAt}
+                updatedAt={discussion.updatedAt}
+              />
               <CardTitle className="text-xl font-semibold break-words">
                 {discussion.title}
               </CardTitle>

@@ -3,15 +3,16 @@
 import { useToast } from "@/hooks/use-toast";
 import useFetchCommentsByDiscussionId from "@/hooks/useFetchCommentsByDiscussionId";
 import { removeComment } from "@/services/globalApi";
-import { useSelector } from "react-redux";
-import DeleteCommentPopup from "../popups/DeleteCommentPopup";
-import { Card, CardContent } from "../ui/card";
-import { Button } from "../ui/button";
 import { Reply } from "lucide-react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import CommentReplyForm from "../forms/CommentReplyForm";
-import LikeIcon from "../icons/LikeIcon";
 import CommentIcon from "../icons/CommentIcon";
+import LikeIcon from "../icons/LikeIcon";
+import DeleteCommentPopup from "../popups/DeleteCommentPopup";
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
+import DisplayUsernamePublishedTime from "./DisplayUsernamePublishedTime";
 import Replies from "./Replies";
 
 const Comments = ({ discussionId }) => {
@@ -52,7 +53,11 @@ const Comments = ({ discussionId }) => {
       {comments.map((comment) => (
         <Card className="pt-6" key={comment._id}>
           <CardContent>
-            <p className="text-sm font-light mb-4">{comment.author.username}</p>
+            <DisplayUsernamePublishedTime
+              username={comment.author.username}
+              createdAt={comment.createdAt}
+              updatedAt={comment.updatedAt}
+            />
             <p className="mb-2 break-words">{comment.description}</p>
             <div className="flex justify-between items-center text-sm">
               <div className="flex items-center gap-4">

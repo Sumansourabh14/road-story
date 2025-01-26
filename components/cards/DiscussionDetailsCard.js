@@ -1,16 +1,17 @@
 "use client";
 
 import { sendHTMLShare } from "@/utils/functions/sendHTMLShare";
+import { useState } from "react";
 import EditDiscussionButton from "../buttons/EditDiscussionButton";
+import EditDiscussionCancelButton from "../buttons/EditDiscussionCancelButton";
 import TwitterShare from "../buttons/shareButtons/TwitterShare";
 import WhatsAppShare from "../buttons/shareButtons/WhatsAppShare";
+import DisplayUsernamePublishedTime from "../displayData/DisplayUsernamePublishedTime";
+import EditDiscussionThreadForm from "../forms/EditDiscussionThreadForm";
 import LikeIcon from "../icons/LikeIcon";
 import DeleteDiscussionPopup from "../popups/DeleteDiscussionPopup";
 import ShareDiscussionPopup from "../popups/ShareDiscussionPopup";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { useState } from "react";
-import EditDiscussionCancelButton from "../buttons/EditDiscussionCancelButton";
-import EditDiscussionThreadForm from "../forms/EditDiscussionThreadForm";
 
 const DiscussionDetailsCard = ({
   discussion,
@@ -31,7 +32,11 @@ const DiscussionDetailsCard = ({
   return !isEditView ? (
     <Card className="border shadow-sm">
       <CardHeader>
-        <p>{discussion.author?.username}</p>
+        <DisplayUsernamePublishedTime
+          username={discussion.author?.username}
+          createdAt={discussion.createdAt}
+          updatedAt={discussion.updatedAt}
+        />
         <CardTitle className="text-2xl font-semibold mt-4 break-words">
           {discussion.title}
         </CardTitle>
