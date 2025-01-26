@@ -3,6 +3,7 @@ import {
   faInstagram,
   faRedditAlien,
   faXTwitter,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import SocialMediaLinkIcon from "../icons/SocialMediaLinkIcon";
@@ -64,6 +65,11 @@ const Footer = () => {
                 destination={"https://www.reddit.com/user/roadstoryy/"}
                 label="Reddit"
                 icon={faRedditAlien}
+              />
+              <SocialMediaLinkIcon
+                destination={"https://www.youtube.com/@RoadStoryy"}
+                label="YouTube"
+                icon={faYoutube}
               />
             </div>
           </div>
