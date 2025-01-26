@@ -1,10 +1,16 @@
+"use client";
+
 import { sendHTMLShare } from "@/utils/functions/sendHTMLShare";
+import EditDiscussionButton from "../buttons/EditDiscussionButton";
 import TwitterShare from "../buttons/shareButtons/TwitterShare";
 import WhatsAppShare from "../buttons/shareButtons/WhatsAppShare";
 import LikeIcon from "../icons/LikeIcon";
 import DeleteDiscussionPopup from "../popups/DeleteDiscussionPopup";
 import ShareDiscussionPopup from "../popups/ShareDiscussionPopup";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { useState } from "react";
+import EditDiscussionCancelButton from "../buttons/EditDiscussionCancelButton";
+import EditDiscussionThreadForm from "../forms/EditDiscussionThreadForm";
 
 const DiscussionDetailsCard = ({
   discussion,
@@ -12,7 +18,17 @@ const DiscussionDetailsCard = ({
   deleteDiscussion,
   url,
 }) => {
-  return (
+  const [isEditView, setIsEditView] = useState(false);
+
+  const handleDiscussionEditClick = () => {
+    setIsEditView(true);
+  };
+
+  const handleDiscussionEditCancelClick = () => {
+    setIsEditView(false);
+  };
+
+  return !isEditView ? (
     <Card className="border shadow-sm">
       <CardHeader>
         <p>{discussion.author?.username}</p>
@@ -27,7 +43,7 @@ const DiscussionDetailsCard = ({
             dangerouslySetInnerHTML={{ __html: discussion.description }}
           ></div>
         )}
-        <div className="flex gap-4 justify-between items-center mt-4">
+        <div className="flex gap-4 justify-between items-center mt-4 flex-wrap">
           <div className="flex gap-4 items-center ">
             <div className="flex flex-row gap-2 items-center">
               <p className="text-sm">{discussion.likes}</p>
@@ -58,8 +74,35 @@ const DiscussionDetailsCard = ({
             </ShareDiscussionPopup>
           </div>
           {isAuthorLoggedIn && (
-            <div>
+            <div className="flex gap-4 flex-wrap">
+              <EditDiscussionButton
+                handleDiscussionEditClick={handleDiscussionEditClick}
+              />
               <DeleteDiscussionPopup deleteDiscussion={deleteDiscussion} />
+            </div>
+          )}
+        </div>
+      </CardContent>
+    </Card>
+  ) : (
+    <Card className="border shadow-sm">
+      <CardHeader>
+        <p>{discussion.author?.username}</p>
+      </CardHeader>
+      <CardContent>
+        <EditDiscussionThreadForm
+          id={discussion._id}
+          currentTitle={discussion.title}
+          currentDescription={discussion.description}
+          handleBackToOriginalView={handleDiscussionEditCancelClick}
+        />
+        <div className="flex gap-4 justify-between items-center mt-4 flex-wrap">
+          <div></div>
+          {isAuthorLoggedIn && (
+            <div className="flex gap-4 flex-wrap">
+              <EditDiscussionCancelButton
+                handleClick={handleDiscussionEditCancelClick}
+              />
             </div>
           )}
         </div>

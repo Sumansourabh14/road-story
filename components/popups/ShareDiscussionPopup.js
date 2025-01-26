@@ -15,7 +15,7 @@ const ShareDiscussionPopup = ({ title, buttonTitle, children }) => {
     <Dialog>
       <DialogTrigger asChild>
         <Button variant="outline" title={buttonTitle}>
-          <Share2 />
+          <Share2 /> Share
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

@@ -95,6 +95,23 @@ export const createDiscussionThread = async (data, token) => {
   }
 };
 
+export const updateDiscussionThread = async (id, data, token) => {
+  try {
+    const response = await axios.patch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/discussion/update/${id}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const removeDiscussionThread = async (discussionId, token) => {
   try {
     const response = await axios.delete(

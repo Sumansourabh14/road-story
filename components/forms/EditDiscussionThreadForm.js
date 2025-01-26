@@ -1,14 +1,14 @@
 "use client";
 import { useToast } from "@/hooks/use-toast";
-import { createDiscussionThread } from "@/services/globalApi";
+import { updateDiscussionThread } from "@/services/globalApi";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import DiscussionFormTemplate from "./DiscussionFormTemplate";
 
-const DiscussionThreadForm = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+const EditDiscussionThreadForm = ({ id, currentTitle, currentDescription }) => {
+  const [title, setTitle] = useState(currentTitle);
+  const [description, setDescription] = useState(currentDescription);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { user, token } = useSelector((state) => state.auth);
@@ -19,7 +19,7 @@ const DiscussionThreadForm = () => {
     e.preventDefault();
 
     if (!user) {
-      setError("Please login to create a new discussion thread");
+      setError("Please login to update this discussion thread");
     }
 
     setLoading(true);
@@ -27,18 +27,15 @@ const DiscussionThreadForm = () => {
     const payload = {
       title,
       description,
-      authorId: user._id,
     };
 
-    const res = await createDiscussionThread(payload, token);
+    const res = await updateDiscussionThread(id, payload, token);
 
     if (res.status === 200) {
       toast({
-        title: "Discussion created successfully!",
-        description:
-          "Go to the discussions page to view all discussion threads.",
+        title: "Discussion updated successfully!",
       });
-      router.push("/discussions");
+      router.push(`/discussions`);
     }
     setLoading(false);
 
@@ -49,7 +46,7 @@ const DiscussionThreadForm = () => {
 
   return (
     <DiscussionFormTemplate
-      submitButtonTitle={"Create Discussion"}
+      submitButtonTitle={"Update Discussion"}
       handleSubmit={handleSubmit}
       title={title}
       handleTitleChange={(e) => setTitle(e.target.value)}
@@ -61,4 +58,4 @@ const DiscussionThreadForm = () => {
   );
 };
 
-export default DiscussionThreadForm;
+export default EditDiscussionThreadForm;
