@@ -16,7 +16,12 @@ const Replies = ({ commentId, discussionId }) => {
   const { user, token } = useSelector((state) => state.auth);
 
   const handleDeleteComment = async (commentId, parentCommentId) => {
-    const res = await removeCommentReply(commentId, parentCommentId, token);
+    const res = await removeCommentReply(
+      commentId,
+      parentCommentId,
+      discussionId,
+      token
+    );
 
     if (res.status === 200) {
       toast({

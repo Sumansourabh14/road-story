@@ -178,10 +178,15 @@ export const createCommentReply = async (data, token) => {
   }
 };
 
-export const removeCommentReply = async (commentId, parentCommentId, token) => {
+export const removeCommentReply = async (
+  commentId,
+  parentCommentId,
+  discussionId,
+  token
+) => {
   try {
     const response = await axios.delete(
-      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/delete/reply/${parentCommentId}/${commentId}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/comment/delete/reply/${parentCommentId}/${commentId}/${discussionId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
