@@ -37,7 +37,11 @@ const DiscussionFormTemplate = ({
           Description
         </label>
         <div className="mt-2">
-          <Tiptap content={description} onChange={handleDescriptionChange} />
+          <Tiptap
+            content={description}
+            onChange={handleDescriptionChange}
+            placeholder={"Enter a description..."}
+          />
         </div>
       </div>
 

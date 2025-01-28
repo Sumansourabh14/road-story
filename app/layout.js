@@ -8,6 +8,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
+import ShareFeedbackNavbar from "@/components/customUi/ShareFeedbackNavbar";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -43,6 +44,7 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
+            <ShareFeedbackNavbar />
             <Navbar />
             {children}
             <Footer />

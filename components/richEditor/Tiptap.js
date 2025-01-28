@@ -12,7 +12,7 @@ import Toolbar from "./Toolbar";
 import { useSelector } from "react-redux";
 import TextAlign from "@tiptap/extension-text-align";
 
-const Tiptap = ({ content, onChange }) => {
+const Tiptap = ({ content, onChange, placeholder }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -30,7 +30,7 @@ const Tiptap = ({ content, onChange }) => {
         },
       }),
       Placeholder.configure({
-        placeholder: "Enter a description...",
+        placeholder,
       }),
     ],
     content: content,

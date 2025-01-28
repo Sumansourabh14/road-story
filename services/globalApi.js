@@ -95,6 +95,18 @@ export const createDiscussionThread = async (data, token) => {
   }
 };
 
+export const createUserFeedback = async (description) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/data/create-user-feedback`,
+      { description }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const updateDiscussionThread = async (id, data, token) => {
   try {
     const response = await axios.patch(
