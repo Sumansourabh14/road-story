@@ -3,7 +3,7 @@ import Link from "next/link";
 const ShareFeedbackNavbar = () => {
   return (
     <nav className="font-[family-name:var(--font-inter)]">
-      <div className="container mx-auto px-1 py-1">
+      <div className="container mx-auto px-2 py-1">
         <p className="text-center">
           Your feedback matters! Tell us how we can make this site better:&nbsp;
           <Link
