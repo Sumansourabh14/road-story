@@ -35,7 +35,7 @@ const UserFeedbackForm = () => {
       <TipTapDescription
         description={description}
         handleDescriptionChange={setDescription}
-        placeholder={"How can be make this site better?"}
+        placeholder={"How can we make this site better?"}
       />
       <LoadingButton
         loading={loading}
