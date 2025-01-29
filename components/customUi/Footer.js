@@ -14,7 +14,7 @@ const Footer = () => {
     <footer className="font-[family-name:var(--font-inter)]">
       <hr />
       <div className="container mx-auto py-8 px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div>
             <h2 className="text-lg font-semibold">{brandTitle}</h2>
@@ -44,6 +44,19 @@ const Footer = () => {
                   Sign up
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className="text-lg font-semibold">Helpful Links</h2>
+            <ul className="mt-2 space-y-2">
+              <ListItemLink title={"Cars"} destination={"/cars/all"} />
+              <ListItemLink title={"Videos"} destination={"/videos"} />
+              {/* <ListItemLink title={"About"} destination={"/about"} /> */}
+              <ListItemLink
+                title={"Discussions"}
+                destination={"/discussions"}
+              />
             </ul>
           </div>
 
