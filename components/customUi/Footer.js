@@ -57,6 +57,7 @@ const Footer = () => {
                 title={"Discussions"}
                 destination={"/discussions"}
               />
+              <ListItemLink title={"Trips"} destination={"/trips"} />
             </ul>
           </div>
 
