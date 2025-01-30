@@ -95,6 +95,23 @@ export const createDiscussionThread = async (data, token) => {
   }
 };
 
+export const createTrip = async (payload, token) => {
+  try {
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/trips/create`,
+      payload,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const createUserFeedback = async (description) => {
   try {
     const response = await axios.post(

@@ -32,7 +32,7 @@ const DiscussionThreadForm = () => {
 
     const res = await createDiscussionThread(payload, token);
 
-    if (res.status === 200) {
+    if (res.status === 201) {
       toast({
         title: "Discussion created successfully!",
         description:
