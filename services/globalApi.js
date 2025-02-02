@@ -32,6 +32,19 @@ export const getSelf = async (token) => {
   return response;
 };
 
+export const updateSelf = async (carId, token) => {
+  const response = await axios.patch(
+    `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/users/self`,
+    { carId },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  return response;
+};
+
 export const checkUsernameExists = async (username) => {
   try {
     const response = await axios.post(

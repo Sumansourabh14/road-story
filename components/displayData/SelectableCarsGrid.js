@@ -1,15 +1,14 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
-import { useState } from "react";
 
-export default function SelectableCarsGrid({ cars }) {
-  const [selectedCar, setSelectedCar] = useState(null);
-
+export default function SelectableCarsGrid({
+  cars,
+  selectedCar,
+  setSelectedCar,
+}) {
   return (
     <div className="p-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {cars.map((car) => (
           <label key={car._id} className="cursor-pointer">
             <input

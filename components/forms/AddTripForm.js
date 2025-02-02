@@ -56,8 +56,6 @@ export default function AddTripForm() {
       userId: user._id,
     };
 
-    console.log({ payload });
-
     const res = await createTrip(payload, token);
     console.log({ res });
 
