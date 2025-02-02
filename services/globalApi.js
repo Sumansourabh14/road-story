@@ -136,6 +136,22 @@ export const getAllTrips = async () => {
   }
 };
 
+export const getAllTripsByUser = async (token) => {
+  try {
+    const response = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}/api/v1/trips/self/all`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
 export const createUserFeedback = async (description) => {
   try {
     const response = await axios.post(

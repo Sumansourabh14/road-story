@@ -21,16 +21,16 @@ const TripCard = ({ trip }) => {
           <p>
             <strong>One-way:</strong> {trip.isOneWay ? "Yes" : "No"}
           </p>
-          <p>
+          {/* <p>
             <strong>Food Stops:</strong> {trip.foodStops.length} stop(s)
-          </p>
+          </p> */}
         </div>
       </CardContent>
-      <CardFooter className="p-4">
+      {/* <CardFooter className="p-4">
         <Button variant="outline" className="w-full">
           View Details
         </Button>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 };

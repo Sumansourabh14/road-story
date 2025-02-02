@@ -5,18 +5,18 @@ import { useEffect, useState } from "react";
 
 const useFetchCar = (id) => {
   const [car, setCar] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [carLoading, setCarLoading] = useState(true);
 
   useEffect(() => {
     let mounted = true;
 
     async function fetchCar() {
-      setLoading(true);
+      setCarLoading(true);
       const res = await getCar(id);
 
       if (mounted) {
         setCar(res.data.data);
-        setLoading(false);
+        setCarLoading(false);
       }
     }
 
@@ -27,7 +27,7 @@ const useFetchCar = (id) => {
     };
   }, [id]);
 
-  return { car, loading };
+  return { car, carLoading };
 };
 
 export default useFetchCar;
