@@ -20,6 +20,7 @@ const Discussions = () => {
           <Card className="border shadow-sm">
             <CardHeader>
               <DisplayUsernamePublishedTime
+                carOwned={discussion.author?.carOwned}
                 username={discussion.author?.username}
                 createdAt={discussion.createdAt}
                 updatedAt={discussion.updatedAt}
