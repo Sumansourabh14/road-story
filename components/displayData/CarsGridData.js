@@ -1,6 +1,6 @@
-import CarsGrid from "../grid/CarsGrid";
+import CarsGridPagination from "../grid/CarsGridPagination";
 import CarsSkeletonGrid from "../skeletons/CarsSkeletonGrid";
 
 export default function CarsGridData({ cars, loading }) {
-  return loading ? <CarsSkeletonGrid /> : <CarsGrid cars={cars} />;
+  return loading ? <CarsSkeletonGrid /> : <CarsGridPagination cars={cars} />;
 }
