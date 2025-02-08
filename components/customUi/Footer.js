@@ -28,6 +28,7 @@ const Footer = () => {
             <h2 className="text-lg font-semibold">Quick Links</h2>
             <ul className="mt-2 space-y-2">
               <ListItemLink title={"Home"} destination={"/"} />
+              <ListItemLink title={"About"} destination={"/about"} />
               <ListItemLink
                 title={"Upload Video"}
                 destination={"/upload/video"}
