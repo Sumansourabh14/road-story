@@ -1,59 +1,110 @@
+"use client";
+
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+  Calendar,
+  Car,
+  FileVideo,
+  Home,
+  Inbox,
+  Info,
+  Route,
+  Search,
+  Settings,
+  Speech,
+  Video,
+} from "lucide-react";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import { NavUser } from "../navigation/NavUser";
 
-// Menu items.
-const items = [
+const userItems = [
+  {
+    title: "Trips",
+    url: "/user/trips",
+    icon: Route,
+  },
+];
+
+const platformItems = [
   {
     title: "Home",
-    url: "#",
+    url: "/",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Upload Video",
+    url: "/upload-video",
+    icon: FileVideo,
   },
   {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
+    title: "Videos",
+    url: "/videos",
+    icon: Video,
   },
   {
-    title: "Search",
-    url: "#",
-    icon: Search,
+    title: "Discussions",
+    url: "/discussions",
+    icon: Speech,
   },
   {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
+    title: "Cars",
+    url: "/cars",
+    icon: Car,
+  },
+  {
+    title: "About",
+    url: "/about",
+    icon: Info,
   },
 ];
 
 const UserSidebar = () => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <Sidebar collapsible="icon">
+      <SidebarHeader></SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>User-specific</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {userItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Platform</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {platformItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <Link href={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -61,6 +112,11 @@ const UserSidebar = () => {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      {!!user && (
+        <SidebarFooter>
+          <NavUser user={user} />
+        </SidebarFooter>
+      )}
     </Sidebar>
   );
 };
