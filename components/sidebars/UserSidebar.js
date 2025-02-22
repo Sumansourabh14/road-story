@@ -13,16 +13,15 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import {
-  Calendar,
   Car,
+  Edit,
   FileVideo,
   Home,
-  Inbox,
   Info,
+  LayoutDashboard,
   Route,
-  Search,
-  Settings,
   Speech,
+  User2,
   Video,
 } from "lucide-react";
 import Link from "next/link";
@@ -31,9 +30,24 @@ import { NavUser } from "../navigation/NavUser";
 
 const userItems = [
   {
+    title: "Dashboard",
+    url: "/user/dashboard",
+    icon: LayoutDashboard,
+  },
+  {
     title: "Trips",
     url: "/user/trips",
     icon: Route,
+  },
+  {
+    title: "Profile",
+    url: "/user/profile",
+    icon: User2,
+  },
+  {
+    title: "Update Profile",
+    url: "/user/profile/update",
+    icon: Edit,
   },
 ];
 
@@ -82,7 +96,7 @@ const UserSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               {userItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem key={item.title} title={item.title}>
                   <SidebarMenuButton asChild>
                     <Link href={item.url}>
                       <item.icon />
@@ -99,7 +113,7 @@ const UserSidebar = () => {
           <SidebarGroupContent>
             <SidebarMenu>
               {platformItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
+                <SidebarMenuItem key={item.title} title={item.title}>
                   <SidebarMenuButton asChild>
                     <Link href={item.url}>
                       <item.icon />

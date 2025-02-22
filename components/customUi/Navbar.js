@@ -36,14 +36,20 @@ const Navbar = () => {
           <ListItemLink title={"Discussions"} destination={"/discussions"} />
           {/* <ListItemLink title={"About"} destination={"/about"} /> */}
           {!!user ? (
-            <li>
-              <Button
-                onClick={handleLogout}
-                className="hover:bg-red-900 transition px-8 py-2 bg-red-800 rounded-md border-b-2 text-md font-light"
-              >
-                Logout
-              </Button>
-            </li>
+            <>
+              <ListItemLink
+                title={"Dashboard"}
+                destination={"/user/dashboard"}
+              />
+              <li>
+                <Button
+                  onClick={handleLogout}
+                  className="hover:bg-red-900 transition px-8 py-2 bg-red-800 rounded-md border-b-2 text-md font-light"
+                >
+                  Logout
+                </Button>
+              </li>
+            </>
           ) : (
             <>
               <ListItemLink title={"Login"} destination={"/login"} />
