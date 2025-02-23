@@ -10,13 +10,15 @@ const SingleCarCardData = ({ carId }) => {
   }
 
   return (
-    <CarCard
-      id={car._id}
-      brand={car.brand}
-      imgSrc={car.img.url}
-      model={car.model}
-      price={car.price.ex_showroom}
-    />
+    Object.keys(car).length !== 0 && (
+      <CarCard
+        id={car._id}
+        brand={car.brand}
+        imgSrc={car.img.url}
+        model={car.model}
+        price={car.price.ex_showroom}
+      />
+    )
   );
 };
 

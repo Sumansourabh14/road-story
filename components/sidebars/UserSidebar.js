@@ -75,7 +75,7 @@ const platformItems = [
   },
   {
     title: "Cars",
-    url: "/cars",
+    url: "/cars/all",
     icon: Car,
   },
   {
