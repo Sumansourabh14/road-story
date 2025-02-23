@@ -37,7 +37,7 @@ const Profile = () => {
         <UserDetailsCard user={user} />
         <div className="mt-12 text-center">
           <Link
-            href={"/profile/update"}
+            href={"/user/profile/update"}
             className="px-20 py-4 bg-black text-white text-xl hover:bg-gray-700 rounded-lg font-bold"
           >
             Edit Profile

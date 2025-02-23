@@ -1,10 +1,10 @@
 "use client";
+import { logout } from "@/redux/slices/user";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThemeToggle } from "../customUi/ThemeToggle";
 import { Button } from "../ui/button";
 import ListItemLink from "./ListItemLink";
-import { logout } from "@/redux/slices/user";
-import { useState } from "react";
 
 const UserNavbar = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

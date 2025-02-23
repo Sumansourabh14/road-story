@@ -1,3 +1,4 @@
+import Breadcrumbs from "@/components/navigation/Breadcrumbs";
 import UserSidebar from "@/components/sidebars/UserSidebar";
 import { Separator } from "@/components/ui/separator";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -7,7 +8,10 @@ export default function UserLayout({ children }) {
     <SidebarProvider>
       <UserSidebar />
       <section>
-        <SidebarTrigger />
+        <section className="flex gap-4 items-center">
+          <SidebarTrigger />
+          <Breadcrumbs />
+        </section>
         <Separator />
         {/* <UserNavbar>
           <SidebarTrigger />
