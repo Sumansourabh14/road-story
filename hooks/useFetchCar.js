@@ -11,6 +11,13 @@ const useFetchCar = (id) => {
     let mounted = true;
 
     async function fetchCar() {
+      if (!id) {
+        // Check if id is null or undefined
+        setCar({}); //set car to empty array.
+        setCarLoading(false);
+        return; // Exit early
+      }
+
       setCarLoading(true);
       const res = await getCar(id);
 

@@ -1,16 +1,12 @@
 "use client";
-import { brandTitle } from "@/utils/content/generalSiteContent";
-import { useState } from "react";
-import ListItemLink from "../navigation/ListItemLink";
-import SignUpListItemLink from "../navigation/SignUpListItemLink";
-import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { Button } from "../ui/button";
 import { logout } from "@/redux/slices/user";
-import { ThemeToggle } from "./ThemeToggle";
-import Image from "next/image";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { ThemeToggle } from "../customUi/ThemeToggle";
+import { Button } from "../ui/button";
+import ListItemLink from "./ListItemLink";
 
-const Navbar = () => {
+const UserNavbar = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -20,19 +16,9 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="font-[family-name:var(--font-inter)]">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        {/* Brand Logo */}
-        <Link href="/" className="text-xl font-bold flex items-center gap-4">
-          <Image
-            src="/images/road-storyy-logo.png"
-            width={30}
-            height={30}
-            alt="road story logo"
-          />
-          {brandTitle}
-        </Link>
-
+    <nav>
+      <div className="container mx-auto px-2 py-2 flex justify-between items-center">
+        {children}
         {/* Desktop Navigation */}
         <ul className="hidden md:flex space-x-6 md:items-center">
           <ThemeToggle />
@@ -42,26 +28,15 @@ const Navbar = () => {
           <ListItemLink title={"Maps"} destination={"/maps"} />
           <ListItemLink title={"Discussions"} destination={"/discussions"} />
           {/* <ListItemLink title={"About"} destination={"/about"} /> */}
-          {!!user ? (
-            <>
-              <ListItemLink
-                title={"Dashboard"}
-                destination={"/user/dashboard"}
-              />
-              <li>
-                <Button
-                  onClick={handleLogout}
-                  className="hover:bg-red-900 transition px-8 py-2 bg-red-800 rounded-md border-b-2 text-md font-light"
-                >
-                  Logout
-                </Button>
-              </li>
-            </>
-          ) : (
-            <>
-              <ListItemLink title={"Login"} destination={"/login"} />
-              <SignUpListItemLink />
-            </>
+          {!!user && (
+            <li>
+              <Button
+                onClick={handleLogout}
+                className="hover:bg-red-900 transition px-8 py-2 bg-red-800 rounded-md border-b-2 text-md font-light"
+              >
+                Logout
+              </Button>
+            </li>
           )}
         </ul>
 
@@ -103,7 +78,7 @@ const Navbar = () => {
             <ListItemLink title={"Maps"} destination={"/maps"} />
             <ListItemLink title={"Discussions"} destination={"/discussions"} />
             {/* <ListItemLink title={"About"} destination={"/about"} /> */}
-            {!!user ? (
+            {!!user && (
               <li>
                 <Button
                   onClick={handleLogout}
@@ -112,11 +87,6 @@ const Navbar = () => {
                   Logout
                 </Button>
               </li>
-            ) : (
-              <>
-                <ListItemLink title={"Login"} destination={"/login"} />
-                <SignUpListItemLink />
-              </>
             )}
           </ul>
         </div>
@@ -126,4 +96,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default UserNavbar;

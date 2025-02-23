@@ -9,7 +9,7 @@ const RedirectWrapper = ({ children }) => {
 
   useEffect(() => {
     if (!!user) {
-      router.push("/");
+      router.push("/user/dashboard");
     }
   }, [user]);
 

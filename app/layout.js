@@ -9,6 +9,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import ShareFeedbackNavbar from "@/components/customUi/ShareFeedbackNavbar";
+import HideComponentsOnUserPages from "@/components/utilities/HideComponentsOnUserPages";
 config.autoAddCss = false;
 
 const inter = Inter({
@@ -44,10 +45,14 @@ export default function RootLayout({ children }) {
             enableSystem
             disableTransitionOnChange
           >
-            <ShareFeedbackNavbar />
-            <Navbar />
+            <HideComponentsOnUserPages>
+              <ShareFeedbackNavbar />
+              <Navbar />
+            </HideComponentsOnUserPages>
             {children}
-            <Footer />
+            <HideComponentsOnUserPages>
+              <Footer />
+            </HideComponentsOnUserPages>
             <Toaster />
           </ThemeProvider>
         </StoreProvider>
