@@ -7,7 +7,7 @@ export default function UserLayout({ children }) {
   return (
     <SidebarProvider>
       <UserSidebar />
-      <section>
+      <section className="flex-1">
         <section className="flex gap-4 items-center">
           <SidebarTrigger />
           <Breadcrumbs />

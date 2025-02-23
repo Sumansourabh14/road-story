@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../ui/button";
 import { logout } from "@/redux/slices/user";
 import { ThemeToggle } from "./ThemeToggle";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,13 @@ const Navbar = () => {
     <nav className="font-[family-name:var(--font-inter)]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Brand Logo */}
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className="text-xl font-bold flex items-center gap-4">
+          <Image
+            src="/images/road-storyy-logo.png"
+            width={30}
+            height={30}
+            alt="road story logo"
+          />
           {brandTitle}
         </Link>
 

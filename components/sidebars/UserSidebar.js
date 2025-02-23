@@ -27,6 +27,7 @@ import {
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { NavUser } from "../navigation/NavUser";
+import Image from "next/image";
 
 const userItems = [
   {
@@ -89,7 +90,16 @@ const UserSidebar = () => {
 
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader></SidebarHeader>
+      <SidebarHeader>
+        <Link href="/">
+          <Image
+            src="/images/road-storyy-logo.png"
+            width={30}
+            height={30}
+            alt="road story logo"
+          />
+        </Link>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>User-specific</SidebarGroupLabel>
